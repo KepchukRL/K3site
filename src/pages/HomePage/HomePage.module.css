@@ -1,0 +1,18 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.Main {
+    width: 100%;
+    height: 100vw;
+    background-color: #121212;
+}
+.Header{
+    z-index: 10;
+    position: relative;
+}
+.Slider{
+    z-index: 5;
+}
