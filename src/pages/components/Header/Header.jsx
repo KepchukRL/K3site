@@ -1,9 +1,9 @@
 import { useState } from "react";
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom'; // 👈 импорт
 import styles from "./Header.module.css"
 
 function Header() {
-
+    const navigate = useNavigate(); // 👈 инициализация
     const [phoneNumber, setPhoneNumber] = useState("8(967)555-25-55");
     const [currentCity, setCurrentCity] = useState("Оренбург");
 
@@ -38,7 +38,7 @@ function Header() {
                     <div className={styles.Left}>
                         <div className={styles.Logo}>
                             <span onClick={() => navigate('/')}>
-                            <img className={styles.LogoBox} src="./Image/LogoW.svg" alt="" />
+                                <img className={styles.LogoBox} src="./Image/LogoW.svg" alt="" />
                             </span>
                         </div>
                         <div className={styles.Cities}>
@@ -73,8 +73,8 @@ function Header() {
                     <div className={styles.Right}>
                         <button className={styles.L1}>СТРОИТЕЛЬСТВО</button>
                         <button className={styles.L1}>ДИЗАЙН</button>
-                        <button className={styles.L1}>РЕМОНТ ПОД КЛЮЧ</button>
-                        <button onClick={() => navigate('/Catalog')} className={styles.L1}>МАТЕРИАЛЫ</button>
+                        <button onClick={() => navigate('/rem')} className={styles.L1}>РЕМОНТ ПОД КЛЮЧ</button>
+                        <button onClick={() => navigate('/catalog')} className={styles.L1}>МАТЕРИАЛЫ</button>
                         <button className={styles.L1}>УСЛУГИ</button>
                     </div>
                 </div>

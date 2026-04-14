@@ -16,7 +16,7 @@ function HomePage() {
                     <img src="/Image/Paralax.png" alt="" />
                 </div>
                 <div className={styles.Header}>
-                    <Header></Header>
+                    <Header />
                 </div>
                 <div className={styles.Slider}>
                     <Slider></Slider>
