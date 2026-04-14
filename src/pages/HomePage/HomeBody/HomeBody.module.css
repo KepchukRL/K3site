@@ -1,0 +1,141 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Manrope:wght@200..800&family=Philosopher:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.Blocks {
+    background-image: url(/public/Image/Exclude.png);
+    width: 1920px;
+    height: 1080px;
+}
+
+.Title {
+    background-color: #121212;
+    font-family: "Inter", sans-serif;
+    color: #FFFFFF;
+    font-size: 60px;
+    text-align: center;
+    margin: 0 auto;
+    padding-top: 140px;
+    padding-bottom: 100px;
+}
+
+.Left {
+    font-family: "Inter", sans-serif;
+    color: #FFFFFF;
+    position: absolute;
+    left: 280px;
+    top: 550px;
+}
+
+.LeftUp {
+    font-size: 48px;
+}
+
+.LeftDown {
+    font-size: 20px;
+}
+
+.Right {
+    font-family: "Inter", sans-serif;
+    color: #FFFFFF;
+    font-size: 24px;
+    text-align: right;
+}
+
+.RightA {
+    position: absolute;
+    right: 455px;
+    top: 590px;
+}
+
+.RightB {
+    position: absolute;
+    right: 590px;
+    top: 770px;
+}
+
+.RightC {
+    position: absolute;
+    right: 725px;
+    top: 960px;
+}
+
+.RightD {
+    position: absolute;
+    right: 860px;
+    top: 1130px;
+}
+
+.RightE {
+    position: absolute;
+    right: 995px;
+    top: 1310px;
+}
+.Under{
+    background-color: #121212;
+}
+.Sale {
+    padding-top: 150px;
+    font-family: "Inter", sans-serif;
+    color: #FFFFFF;
+    font-size: 60px;
+    text-align: center;
+    margin: 0 auto;
+    background-color: #121212;
+}
+
+.Plus {
+    background-color: #121212;
+    width: 1240px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 190px;
+    margin-top: 120px;
+    padding-bottom: 200px;
+}
+
+.Block {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.About {
+    text-align: center;
+    font-family: "Inter", sans-serif;
+    color: #FFFFFF;
+    font-size: 28px;
+}
+.Box{
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #D9D9D9;
+}
+.Box:hover{
+size: 2;
+background-color: #F6CC00;
+}
+.Numb{
+    display: none;
+    font-family: "Inter", sans-serif;
+    color: #FFFFFF;
+    font-size: 14px;
+}
+.Numb .Box:hover{
+    display: flex;
+}
+.Desc{
+    font-family: "Inter", sans-serif;
+    color: #FFFFFF;
+    font-size: 14px;
+    text-align: center;
+}

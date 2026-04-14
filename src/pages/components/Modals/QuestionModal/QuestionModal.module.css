@@ -1,0 +1,104 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Manrope:wght@200..800&family=Philosopher:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+.Inner{
+    width: 1550px;
+    margin: 0 auto;
+display: flex;
+align-items: center;
+}
+.Left{
+    background-color: #FFFFFF;
+    width: 815px;
+    height: 920px;
+    padding: 60px;
+}
+.Title{
+    font-family: "Inter", sans-serif;
+    font-size: 40px;
+}
+.Desc{
+    font-family: "Inter", sans-serif;
+    font-size: 16px;
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+.Form{
+    font-family: "Inter", sans-serif;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.Quest{
+    font-size: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.QuestI{
+    font-size: 16px;
+    color: #3F403F;
+    width: 520px;
+    height: 120px;
+    padding: 15px;
+}
+.Name{
+       font-size: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+}
+.NameI{
+    font-size: 16px;
+    color: #3F403F;
+    width: 520px;
+    height: 60px;
+    padding:15px;
+    display: flex;
+    align-items: center;
+}
+.Numb{
+    font-size: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.NumbI{
+  font-size: 16px;
+    color: #3F403F;
+    width: 520px;
+    height: 60px;
+    padding:15px;
+    display: flex;
+    align-items: center;  
+}
+.Sogl{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+.Prov{
+    width: 25px;
+    height: 25px;
+    border: 1px solid #3F403F;
+    color: #F6CC00;
+}
+.ButSub{
+width: 520px;
+height: 80px;
+background-color: #F6CC00;
+margin-top: 40px;
+font-size: 20px;
+}
+.Right{
+    width: 735px;
+    height: 668px;
+}
+.QuestIm{
+    width: 735px;
+    height: 668px;
+}
