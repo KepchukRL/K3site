@@ -1,0 +1,119 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Manrope:wght@200..800&family=Philosopher:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.Main {
+  background-color: #121212;
+}
+
+.Header {
+  z-index: 2;
+  position: relative;
+}
+
+.Title {
+  width: 1440px;
+  margin: 0 auto;
+  font-family: "Inter", sans-serif;
+  color: #FFFFFF;
+  font-size: 60px;
+  margin-top: 80px;
+  margin-bottom: 80px;
+}
+
+.Body {
+  width: 1320px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.Inner {
+  display: flex;
+  flex-direction: column;
+}
+
+.Catalog {
+  display: flex;
+  gap: 60px;
+  margin-bottom: 80px;
+}
+
+.Left {
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+}
+
+.Category {
+  width: 300px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  padding-left: 15px;
+  font-family: "Inter", sans-serif;
+  color: #FFFFFF;
+  font-size: 16px;
+  border: 1px solid #FFFFFF20;
+}
+
+.CategButton {
+  width: 300px;
+  height: 40px;
+  background-color: transparent;
+  border: none;
+  color: #FFFFFF;
+  text-align: start;
+}
+
+.Spisok {
+  width: 960px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.Card {
+  font-family: "Inter", sans-serif;
+
+  border: 1px solid #FFFFFF20;
+  width: 320px;
+  height: 295px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: #FFFFFF;
+}
+
+.CardDesc {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 15px;
+  font-size: 12px;
+}
+
+.CardSell {
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  flex-direction: 500;
+}
+.NumbPage{
+  display: flex;
+  margin: 0 auto;
+  margin-bottom: 50px;
+}
+.PageBtn{
+  padding: 12px;
+  border: 1px solid #FFFFFF20;
+  display: flex;
+  text-align: center;
+    font-family: "Inter", sans-serif;
+
+  color: #FFFFFF;
+}

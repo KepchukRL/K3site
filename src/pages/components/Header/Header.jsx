@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from 'react-router-dom'; // 👈 импорт
+import { useNavigate } from 'react-router-dom';
 import styles from "./Header.module.css"
 
 function Header() {
@@ -72,10 +72,10 @@ function Header() {
                     </div>
                     <div className={styles.Right}>
                         <button className={styles.L1}>СТРОИТЕЛЬСТВО</button>
-                        <button className={styles.L1}>ДИЗАЙН</button>
+                        <button onClick={() => navigate('/design')} className={styles.L1}>ДИЗАЙН</button>
                         <button onClick={() => navigate('/rem')} className={styles.L1}>РЕМОНТ ПОД КЛЮЧ</button>
-                        <button onClick={() => navigate('/catalog')} className={styles.L1}>МАТЕРИАЛЫ</button>
-                        <button className={styles.L1}>УСЛУГИ</button>
+                        <button onClick={() => navigate('/product')} className={styles.L1}>МАТЕРИАЛЫ</button>
+                        <button onClick={() => navigate('/about')} className={styles.L1}>О НАС</button>
                     </div>
                 </div>
             </div>

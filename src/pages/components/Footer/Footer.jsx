@@ -1,17 +1,21 @@
+import { useState } from "react";
+import { useNavigate } from 'react-router-dom';
 import styles from './Footer.module.css'
 
 function Footer() {
+
+     const navigate = useNavigate();
 
     return (
         <>
             <div className={styles.Main}>
                 <div className={styles.Inner}>
                     <div className={styles.FLine}>
-                        <p>СТРОИТЕЛЬСТВО</p>
-                        <p>ДИЗАЙН</p>
-                        <p>РЕМОНТ ПОД КЛЮЧ</p>
-                        <p>МАТЕРИАЛЫ</p>
-                        <p>УСЛУГИ</p>
+                        <button className={styles.L1}>СТРОИТЕЛЬСТВО</button>
+                        <button onClick={() => navigate('/design')} className={styles.L1}>ДИЗАЙН</button>
+                        <button onClick={() => navigate('/rem')} className={styles.L1}>РЕМОНТ ПОД КЛЮЧ</button>
+                        <button onClick={() => navigate('/product')} className={styles.L1}>МАТЕРИАЛЫ</button>
+                        <button onClick={() => navigate('/about')} className={styles.L1}>О НАС</button>
                     </div>
                     <div className={styles.SLine}>
                         <div className={styles.Left}>

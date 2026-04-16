@@ -4,6 +4,9 @@ import CatalogPage from './pages/CatalogPage/CatalogPage'
 import HomePage from './pages/HomePage/HomePage'
 import ProductPage from './pages/ProductPage/ProductPage'
 import RemPage from './pages/RemPage/RemPage'
+import AboutPage from './pages/AboutPage/AboutPage'
+import DesignPage from './pages/DesignPage/DesignPage'
+
 
 
 function App() {
@@ -14,8 +17,11 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/catalog" element={<CatalogPage />} />
+          <Route path="/product" element={<ProductPage />} />
           <Route path="/rem" element={<RemPage />} />
-          <Route path="/product/:id" element={<ProductPage />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/design" element={<DesignPage />} />
+
         </Routes>
       </BrowserRouter>
     </>
