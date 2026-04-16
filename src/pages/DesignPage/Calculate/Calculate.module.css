@@ -1,0 +1,89 @@
+.Main {
+    padding: 60px 0;
+    background: linear-gradient(135deg, #f5f5f5 0%, #fff 100%);
+}
+
+.Inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.Title {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.Title p {
+    font-size: 36px;
+    font-weight: 700;
+    color: #1a1a1a;
+}
+
+.Content {
+    display: flex;
+    gap: 50px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.Left {
+    flex: 1;
+}
+
+.Left img {
+    width: 100%;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.Right {
+    flex: 1;
+}
+
+.Right form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.Right input, .Right select {
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    font-size: 16px;
+    transition: border-color 0.3s;
+}
+
+.Right input:focus, .Right select:focus {
+    outline: none;
+    border-color: #ff6b35;
+}
+
+.Right button {
+    background: #ff6b35;
+    color: white;
+    border: none;
+    padding: 15px;
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.Right button:hover {
+    background: #ff5722;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 20px rgba(255, 107, 53, 0.3);
+}
+
+@media (max-width: 768px) {
+    .Title p {
+        font-size: 24px;
+    }
+    
+    .Content {
+        flex-direction: column;
+    }
+}

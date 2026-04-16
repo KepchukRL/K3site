@@ -42,3 +42,6 @@
     flex-direction: column;
     gap: 30px;
 }
+.Photo{
+    pointer-events:none ;
+}

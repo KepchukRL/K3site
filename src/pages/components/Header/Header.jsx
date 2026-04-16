@@ -1,11 +1,12 @@
 import { useState } from "react";
 import { useNavigate } from 'react-router-dom';
-import styles from "./Header.module.css"
+import styles from "./Header.module.css";
 
 function Header() {
-    const navigate = useNavigate(); // 👈 инициализация
+    const navigate = useNavigate();
     const [phoneNumber, setPhoneNumber] = useState("8(967)555-25-55");
     const [currentCity, setCurrentCity] = useState("Оренбург");
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     const phoneNumbers = {
         "Оренбург": "89675552555",
@@ -31,56 +32,76 @@ function Header() {
         window.location.href = `tel:${phoneNumbers[currentCity]}`;
     };
 
+    const toggleMenu = () => {
+        setIsMenuOpen(!isMenuOpen);
+    };
+
+    const menuItems = [
+        { name: "СТРОИТЕЛЬСТВО", path: "/" },
+        { name: "ДИЗАЙН", path: "/design" },
+        { name: "РЕМОНТ ПОД КЛЮЧ", path: "/rem" },
+        { name: "МАТЕРИАЛЫ", path: "/product" },
+        { name: "О НАС", path: "/about" }
+    ];
+
     return (
-        <>
-            <div className={styles.Main}>
-                <div className={styles.Inner}>
-                    <div className={styles.Left}>
-                        <div className={styles.Logo}>
-                            <span onClick={() => navigate('/')}>
-                                <img className={styles.LogoBox} src="./Image/LogoW.svg" alt="" />
-                            </span>
-                        </div>
-                        <div className={styles.Cities}>
-                            <div className={styles.Num}>
-                                <div className={styles.BlockNum}>
-                                    <img className={styles.Tels} src="./Image/Teleph.svg" alt="" />
-                                </div>
-                                <p 
-                                    className={styles.Telis} 
-                                    onClick={handlePhoneClick}
-                                    style={{ cursor: "pointer" }}
-                                >
-                                    {phoneNumber}
-                                </p>
-                            </div>
-                            <div className={styles.Citi}>
-                                <select 
-                                    className={styles.BlockCiti} 
-                                    name="" 
-                                    id=""
-                                    onChange={handleCityChange}
-                                    value={currentCity}
-                                >
-                                    <option value="Оренбург">Оренбург</option>
-                                    <option value="Калининград">Калининград</option>
-                                    <option value="Санкт-Петербург">Санкт-Петербург</option>
-                                    <option value="Москва">Москва</option>
-                                </select>
-                            </div>
-                        </div>
+        <div className={styles.Main}>
+            <div className={styles.Inner}>
+                <div className={styles.Left}>
+                    <div className={styles.Logo}>
+                        <span onClick={() => navigate('/')}>
+                            <img className={styles.LogoBox} src="/Image/LogoW.svg" alt="K3 Ремонт" />
+                        </span>
                     </div>
-                    <div className={styles.Right}>
-                        <button className={styles.L1}>СТРОИТЕЛЬСТВО</button>
-                        <button onClick={() => navigate('/design')} className={styles.L1}>ДИЗАЙН</button>
-                        <button onClick={() => navigate('/rem')} className={styles.L1}>РЕМОНТ ПОД КЛЮЧ</button>
-                        <button onClick={() => navigate('/product')} className={styles.L1}>МАТЕРИАЛЫ</button>
-                        <button onClick={() => navigate('/about')} className={styles.L1}>О НАС</button>
+                    <div className={styles.Cities}>
+                        <div className={styles.Num}>
+                            <div className={styles.BlockNum}>
+                                <img className={styles.Tels} src="/Image/Teleph.svg" alt="Телефон" />
+                            </div>
+                            <p 
+                                className={styles.Telis} 
+                                onClick={handlePhoneClick}
+                                style={{ cursor: "pointer" }}
+                            >
+                                {phoneNumber}
+                            </p>
+                        </div>
+                        <div className={styles.Citi}>
+                            <select 
+                                className={styles.BlockCiti} 
+                                onChange={handleCityChange}
+                                value={currentCity}
+                            >
+                                <option value="Оренбург">Оренбург</option>
+                                <option value="Калининград">Калининград</option>
+                                <option value="Санкт-Петербург">Санкт-Петербург</option>
+                                <option value="Москва">Москва</option>
+                            </select>
+                        </div>
                     </div>
                 </div>
+                
+                <button className={styles.MenuButton} onClick={toggleMenu}>
+                    ☰
+                </button>
+                
+                <div className={`${styles.Right} ${isMenuOpen ? styles.MenuOpen : ''}`}>
+                    {menuItems.map((item, index) => (
+                        <button 
+                            key={index}
+                            onClick={() => {
+                                navigate(item.path);
+                                setIsMenuOpen(false);
+                            }} 
+                            className={styles.L1}
+                        >
+                            {item.name}
+                        </button>
+                    ))}
+                </div>
             </div>
-        </>
-    )
+        </div>
+    );
 }
 
 export default Header;

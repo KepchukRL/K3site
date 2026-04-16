@@ -102,3 +102,51 @@ font-size: 20px;
     width: 735px;
     height: 668px;
 }
+.Success {
+    background: #d4edda;
+    color: #155724;
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.Error {
+    background: #f8d7da;
+    color: #721c24;
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.Btn {
+    width: 100%;
+}
+
+.Loading {
+    text-align: center;
+    padding: 50px;
+    color: white;
+    font-family: "Inter", sans-serif;
+}
+
+.Active {
+    background-color: #F6CC00;
+    color: #000;
+}
+
+.ActivePage {
+    background-color: #F6CC00;
+    color: #000;
+}
+
+.DescText {
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+.DescText span {
+    font-weight: bold;
+    color: #F6CC00;
+}

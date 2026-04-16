@@ -25,7 +25,7 @@ function Slider() {
         },
         {
             title: "КОМФОРТ",
-            description: "Спокойствие и уверенность при реализации проекта, удобство и уют в готовом интерьере. ",
+            description: "Спокойствие и уверенность при реализации проекта, удобство и уют в готовом интерьере.",
             buttonText: "Получить бесплатную консультацию",
             buttonLink: "/consultation",
             backgroundImage: "/Image/slide3.jpg"
@@ -48,7 +48,7 @@ function Slider() {
         if (timerRef.current) clearTimeout(timerRef.current);
         if (animationFrameRef.current) cancelAnimationFrame(animationFrameRef.current);
 
-        const duration = 10000; // 10 секунд
+        const duration = 10000;
         startTimeRef.current = Date.now();
         
         updateProgress(startTimeRef.current, duration);
@@ -95,6 +95,13 @@ function Slider() {
         setActiveIndex(newIndex);
     };
 
+    const scrollToConsultation = () => {
+        const modal = document.querySelector('.question-modal');
+        if (modal) {
+            modal.scrollIntoView({ behavior: 'smooth' });
+        }
+    };
+
     return (
         <div className={styles.sliderContainer}>
             <div 
@@ -119,7 +126,7 @@ function Slider() {
                             <p className={styles.slideDescription}>{slide.description}</p>
                             <button 
                                 className={styles.slideButton}
-                                onClick={() => window.location.href = slide.buttonLink}
+                                onClick={scrollToConsultation}
                             >
                                 {slide.buttonText}
                             </button>

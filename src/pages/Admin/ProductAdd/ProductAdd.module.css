@@ -1,0 +1,104 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Manrope:wght@200..800&family=Philosopher:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.Overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+}
+
+.Main {
+    background: white;
+    border-radius: 20px;
+    width: 90%;
+    max-width: 500px;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.Inner {
+    padding: 30px;
+}
+
+.Inner h2 {
+    margin: 0 0 25px 0;
+    color: #1a1a1a;
+    font-size: 24px;
+    text-align: center;
+}
+
+.Inner form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.Inner input, .Inner select, .Inner textarea {
+    padding: 12px;
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    font-size: 14px;
+    transition: border-color 0.3s;
+}
+
+.Inner input:focus, .Inner select:focus, .Inner textarea:focus {
+    outline: none;
+    border-color: #ff6b35;
+}
+
+.Inner textarea {
+    resize: vertical;
+    font-family: inherit;
+}
+
+.Accept {
+    display: flex;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.Accept button {
+    flex: 1;
+    padding: 12px;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.Accept button:first-child {
+    background: #27ae60;
+    color: white;
+}
+
+.Accept button:first-child:hover:not(:disabled) {
+    background: #229954;
+}
+
+.Accept button:last-child {
+    background: #95a5a6;
+    color: white;
+}
+
+.Accept button:last-child:hover {
+    background: #7f8c8d;
+}
+
+.Accept button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
