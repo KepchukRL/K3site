@@ -4,19 +4,13 @@ import axios from 'axios';
 import styles from './AdminAuth.module.css';
 
 function AdminAuth() {
-    const [formData, setFormData] = useState({
-        username: '',
-        password: ''
-    });
+    const [formData, setFormData] = useState({ username: '', password: '' });
     const [error, setError] = useState('');
     const [isLoading, setIsLoading] = useState(false);
     const navigate = useNavigate();
 
     const handleChange = (e) => {
-        setFormData({
-            ...formData,
-            [e.target.name]: e.target.value
-        });
+        setFormData({ ...formData, [e.target.name]: e.target.value });
         setError('');
     };
 
@@ -26,7 +20,7 @@ function AdminAuth() {
         setError('');
 
         try {
-            const response = await axios.post('http://localhost:5000/api/auth/login', {
+            const response = await axios.post('/api/auth/login', {
                 username: formData.username,
                 password: formData.password
             });
@@ -56,7 +50,6 @@ function AdminAuth() {
                         value={formData.username}
                         onChange={handleChange}
                         required
-                        autoComplete="username"
                     />
                     <input 
                         type="password" 
@@ -65,7 +58,6 @@ function AdminAuth() {
                         value={formData.password}
                         onChange={handleChange}
                         required
-                        autoComplete="current-password"
                     />
                     <button type="submit" disabled={isLoading}>
                         {isLoading ? 'Вход...' : 'Войти'}

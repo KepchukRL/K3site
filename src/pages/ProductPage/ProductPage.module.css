@@ -1,119 +1,318 @@
 @import url('https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Manrope:wght@200..800&family=Philosopher:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 
 * {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 .Main {
-  background-color: #121212;
+    background-color: #121212;
 }
 
 .Header {
-  z-index: 2;
-  position: relative;
+    z-index: 100;
+    position: relative;
 } 
 
 .Title {
-  width: 1440px;
-  margin: 0 auto;
-  font-family: "Inter", sans-serif;
-  color: #FFFFFF;
-  font-size: 60px;
-  margin-top: 80px;
-  margin-bottom: 80px;
+    width: 1440px;
+    margin: 0 auto;
+    font-family: "Inter", sans-serif;
+    color: #FFFFFF;
+    font-size: 60px;
+    margin-top: 80px;
+    margin-bottom: 80px;
 }
 
 .Body {
-  width: 1320px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
+    width: 1320px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
 }
 
 .Inner {
-  display: flex;
-  flex-direction: column;
+    display: flex;
+    flex-direction: column;
 }
   
 .Catalog {
-  display: flex;
-  gap: 60px;
-  margin-bottom: 80px;
+    display: flex;
+    gap: 60px;
+    margin-bottom: 80px;
 }
 
 .Left {
-  width: 300px;
-  display: flex;
-  flex-direction: column;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+}
+
+.Categories {
+    position: sticky;
+    top: 100px;
 }
 
 .Category {
-  width: 300px;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  padding-left: 15px;
-  font-family: "Inter", sans-serif;
-  color: #FFFFFF;
-  font-size: 16px;
-  border: 1px solid #FFFFFF20;
+    width: 300px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    padding-left: 15px;
+    font-family: "Inter", sans-serif;
+    color: #FFFFFF;
+    font-size: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    margin-bottom: 5px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.Category:hover {
+    border-color: #F6CC00;
+    background: rgba(246, 204, 0, 0.1);
 }
 
 .CategButton {
-  width: 300px;
-  height: 40px;
-  background-color: transparent;
-  border: none;
-  color: #FFFFFF;
-  text-align: start;
+    width: 100%;
+    height: 40px;
+    background-color: transparent;
+    border: none;
+    color: #FFFFFF;
+    text-align: start;
+    font-family: "Inter", sans-serif;
+    font-size: 14px;
+    cursor: pointer;
 }
 
-.Spisok {
-  width: 960px;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+/* Убран стиль для активной категории */
+
+.Right {
+    flex: 1;
 }
 
+/* Сетка товаров - 3 в ряд */
+.ProductsGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+    margin-bottom: 40px;
+}
+
+/* Карточка товара */
 .Card {
-  font-family: "Inter", sans-serif;
+    font-family: "Inter", sans-serif;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    background: rgba(255, 255, 255, 0.05);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
 
-  border: 1px solid #FFFFFF20;
-  width: 320px;
-  height: 295px;
-  padding: 10px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  color: #FFFFFF;
+.Card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(246, 204, 0, 0.5);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.Card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
 }
 
 .CardDesc {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin-bottom: 15px;
-  font-size: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 15px;
+}
+
+.CardDescription {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.5;
+    margin: 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.CardPrice {
+    font-size: 18px;
+    font-weight: 700;
+    color: #F6CC00;
+    margin: 0;
 }
 
 .CardSell {
-  font-family: "Inter", sans-serif;
-  font-size: 14px;
-  flex-direction: 500;
+    font-size: 14px;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.6);
 }
-.NumbPage{
-  display: flex;
-  margin: 0 auto;
-  margin-bottom: 50px;
-}
-.PageBtn{
-  padding: 12px;
-  border: 1px solid #FFFFFF20;
-  display: flex;
-  text-align: center;
-    font-family: "Inter", sans-serif;
 
-  color: #FFFFFF;
+/* Пагинация */
+.Pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin: 40px 0 20px;
+    flex-wrap: wrap;
+}
+
+.PageBtn {
+    padding: 10px 18px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    color: white;
+    font-family: "Inter", sans-serif;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.PageBtn:hover:not(:disabled) {
+    background: rgba(246, 204, 0, 0.2);
+    border-color: #F6CC00;
+    color: #F6CC00;
+}
+
+.PageBtn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.PageNumbers {
+    display: flex;
+    gap: 8px;
+}
+
+.PageNumber {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    color: white;
+    font-family: "Inter", sans-serif;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.PageNumber:hover {
+    background: rgba(246, 204, 0, 0.2);
+    border-color: #F6CC00;
+}
+
+.ActivePage {
+    background: #F6CC00;
+    color: #000;
+    border-color: #F6CC00;
+}
+
+.ActivePage:hover {
+    background: #F6CC00;
+    color: #000;
+}
+
+.PaginationInfo {
+    text-align: center;
+    font-family: "Inter", sans-serif;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.5);
+    margin-top: 20px;
+    padding-bottom: 40px;
+}
+
+.Loading {
+    text-align: center;
+    padding: 100px;
+    font-family: "Inter", sans-serif;
+    font-size: 18px;
+    color: white;
+}
+
+/* Адаптивность */
+@media (max-width: 1400px) {
+    .Title {
+        width: 100%;
+        padding: 0 20px;
+        font-size: 48px;
+        text-align: center;
+    }
+    
+    .Body {
+        width: 100%;
+        padding: 0 20px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .Catalog {
+        flex-direction: column;
+        gap: 30px;
+    }
+    
+    .Left {
+        width: 100%;
+    }
+    
+    .Categories {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        position: static;
+    }
+    
+    .Category {
+        width: auto;
+        padding: 0 15px;
+    }
+    
+    .ProductsGrid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .Title {
+        font-size: 36px;
+        margin-top: 50px;
+        margin-bottom: 50px;
+    }
+    
+    .ProductsGrid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .Pagination {
+        gap: 10px;
+    }
+    
+    .PageBtn {
+        padding: 8px 12px;
+        font-size: 12px;
+    }
+    
+    .PageNumber {
+        width: 32px;
+        height: 32px;
+        font-size: 12px;
+    }
+    
+    .PaginationInfo {
+        font-size: 12px;
+    }
 }

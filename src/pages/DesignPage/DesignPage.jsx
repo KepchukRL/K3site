@@ -1,10 +1,10 @@
 import { useEffect } from 'react';
-import Footer from '../../components/Footer/Footer';
-import Header from '../../components/Header/Header';
-import QuestionModal from '../../components/Modals/QuestionModal/QuestionModal';
-import Calculate from './Calculate/Calculate';
-import DesignBody from './DesignBody/DesignBody';
+
 import styles from './DesignPage.module.css';
+import Header from '../../components/Header/Header';
+import DesignBody from './DesignBody/DesignBody';
+import QuestionModal from '../../components/Modals/QuestionModal/QuestionModal';
+import Footer from '../../components/Footer/Footer';
 
 function DesignPage() {
     useEffect(() => {
@@ -17,11 +17,10 @@ function DesignPage() {
                 <Header />
             </div>
             <div className={styles.Body}>
-                <DesignBody />
-                <Calculate />
+                <DesignBody></DesignBody>
             </div>
             <div className={styles.Modals}>
-                <QuestionModal />
+              <QuestionModal></QuestionModal>
             </div>
             <div className={styles.Footer}>
                 <Footer />

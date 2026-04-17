@@ -1,9 +1,8 @@
 import { useEffect } from 'react';
-import Footer from '../../components/Footer/Footer';
-import Header from '../../components/Header/Header';
-import QuestionModal from '../../components/Modals/QuestionModal/QuestionModal';
 import styles from './AboutPage.module.css';
-import Sliden from './Slides/Sliden';
+import Header from '../../components/Header/Header';
+import Sliden from './Slides/Slides';
+import Footer from '../../components/Footer/Footer';
 
 function AboutPage() {
     useEffect(() => {
@@ -16,7 +15,7 @@ function AboutPage() {
                 <Header />
             </div>
             <div className={styles.Slider}>
-                <Sliden />
+                <Sliden/>
             </div>
             <div className={styles.Body}>
                 <div className={styles.Inner}>

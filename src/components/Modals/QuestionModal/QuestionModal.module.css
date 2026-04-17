@@ -150,3 +150,36 @@ font-size: 20px;
     font-weight: bold;
     color: #F6CC00;
 }
+/* Стили для валидации */
+.ErrorInput {
+    border-color: #e74c3c !important;
+}
+
+.ErrorInput:focus {
+    border-color: #e74c3c !important;
+    box-shadow: 0 0 5px rgba(231, 76, 60, 0.3);
+}
+
+.ErrorText {
+    color: #e74c3c;
+    font-size: 12px;
+    font-family: "Inter", sans-serif;
+    margin-top: 5px;
+    display: block;
+}
+
+.HintText {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 11px;
+    font-family: "Inter", sans-serif;
+    margin-top: 5px;
+    display: block;
+}
+
+.CharCounter {
+    text-align: right;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 11px;
+    font-family: "Inter", sans-serif;
+    margin-top: 5px;
+}

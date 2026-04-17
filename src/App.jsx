@@ -1,12 +1,13 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+
+import './App.css';
 import HomePage from './pages/HomePage/HomePage';
 import AboutPage from './pages/AboutPage/AboutPage';
 import RemPage from './pages/RemPage/RemPage';
 import DesignPage from './pages/DesignPage/DesignPage';
 import ProductPage from './pages/ProductPage/ProductPage';
-import AdminPage from './pages/AdminPage/AdminPage';
 import AdminAuth from './pages/AdminAuth/AdminAuth';
-import './App.css';
+import AdminPage from './pages/AdminPage/AdminPage';
 
 const ProtectedRoute = ({ children }) => {
     const token = localStorage.getItem('adminToken');
