@@ -95,7 +95,7 @@
 }
 
 /* Секции */
-.ConsulBlock, .ProductsBlock {
+.ConsulBlock, .ProductsBlock, .WorksBlock {
     background-color: #21201C;
     border-radius: 20px;
     padding: 30px;
@@ -223,6 +223,133 @@
     transform: scale(1.02);
 }
 
+/* Панель фильтрации */
+.FilterPanel {
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.SearchBox {
+    position: relative;
+    margin-bottom: 16px;
+}
+
+.SearchInput {
+    width: 100%;
+    padding: 12px 40px 12px 16px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    font-size: 14px;
+    color: white;
+    font-family: "Inter", sans-serif;
+    transition: all 0.3s ease;
+}
+
+.SearchInput::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.SearchInput:focus {
+    outline: none;
+    border-color: #F6CC00;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.ClearSearchBtn {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    color: rgba(255, 255, 255, 0.5);
+    padding: 4px 8px;
+    transition: color 0.2s;
+}
+
+.ClearSearchBtn:hover {
+    color: #F6CC00;
+}
+
+.CategoryFilter {
+    margin-bottom: 16px;
+}
+
+.FilterLabel {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.8);
+    font-family: "Inter", sans-serif;
+    font-size: 14px;
+}
+
+.CategorySelect {
+    width: 100%;
+    max-width: 300px;
+    padding: 10px 12px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    font-size: 14px;
+    color: white;
+    font-family: "Inter", sans-serif;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.CategorySelect option {
+    background: #21201C;
+    color: white;
+}
+
+.CategorySelect:focus {
+    outline: none;
+    border-color: #F6CC00;
+}
+
+.FilterStats {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding-top: 12px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.ProductsCount {
+    font-family: "Inter", sans-serif;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.ResetFiltersBtn,
+.ShowAllBtn {
+    padding: 6px 12px;
+    background: rgba(255, 255, 255, 0.05);
+    color: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
+    cursor: pointer;
+    font-family: "Inter", sans-serif;
+    font-size: 13px;
+    transition: all 0.2s;
+}
+
+.ResetFiltersBtn:hover,
+.ShowAllBtn:hover {
+    background: #F6CC00;
+    color: #000;
+    border-color: #F6CC00;
+}
+
 /* Товары */
 .AddButtonWrapper {
     text-align: right;
@@ -317,10 +444,95 @@
     border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
+/* Примеры работ */
+.WorksGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 25px;
+    margin-top: 20px;
+}
+
+.WorkCard {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    overflow: hidden;
+    transition: all 0.3s;
+}
+
+.WorkCard:hover {
+    transform: translateY(-5px);
+    border-color: rgba(246, 204, 0, 0.3);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.WorkImage {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+}
+
+.WorkImage img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.WorkInfo {
+    padding: 20px;
+}
+
+.WorkTitle {
+    font-family: "Inter", sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    margin: 0 0 5px 0;
+    color: #F6CC00;
+}
+
+.WorkCity {
+    font-family: "Inter", sans-serif;
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.6);
+    margin: 0 0 10px 0;
+}
+
+.WorkDescription {
+    font-family: "Inter", sans-serif;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.5;
+    margin: 0 0 15px 0;
+}
+
+.WorkDetails {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 0;
+}
+
+.WorkDetails span {
+    font-family: "Inter", sans-serif;
+    font-size: 12px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 5px 10px;
+    border-radius: 6px;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.WorkActions {
+    display: flex;
+    gap: 10px;
+    padding: 15px 20px;
+    background: rgba(0, 0, 0, 0.3);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
 .EditBtn {
     flex: 1;
-    background: rgba(52, 152, 219, 0.8);
-    color: white;
+    background: rgba(246, 204, 0, 0.8);
+    color: #000;
     border: none;
     padding: 10px;
     border-radius: 8px;
@@ -332,7 +544,7 @@
 }
 
 .EditBtn:hover {
-    background: #3498db;
+    background: #F6CC00;
     transform: translateY(-2px);
 }
 
@@ -398,11 +610,29 @@
         min-width: auto;
     }
     
-    .ProductsGrid {
+    .ProductsGrid,
+    .WorksGrid {
         grid-template-columns: 1fr;
     }
     
     .SectionTitle p {
         font-size: 22px;
+    }
+    
+    .FilterPanel {
+        padding: 16px;
+    }
+    
+    .CategorySelect {
+        max-width: 100%;
+    }
+    
+    .FilterStats {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .ProductsCount {
+        font-size: 12px;
     }
 }

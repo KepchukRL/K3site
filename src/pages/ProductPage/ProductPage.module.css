@@ -52,21 +52,24 @@
 .Categories {
     position: sticky;
     top: 100px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
 }
 
 .Category {
-    width: 300px;
+    width: 100%;
     height: 40px;
     display: flex;
     align-items: center;
-    padding-left: 15px;
     font-family: "Inter", sans-serif;
     color: #FFFFFF;
     font-size: 16px;
     border: 1px solid rgba(255, 255, 255, 0.1);
-    margin-bottom: 5px;
     border-radius: 8px;
     transition: all 0.3s ease;
+    background: transparent;
+    overflow: hidden;
 }
 
 .Category:hover {
@@ -76,20 +79,78 @@
 
 .CategButton {
     width: 100%;
-    height: 40px;
+    height: 100%;
     background-color: transparent;
     border: none;
     color: #FFFFFF;
-    text-align: start;
+    text-align: left;
+    padding-left: 15px;
     font-family: "Inter", sans-serif;
     font-size: 14px;
     cursor: pointer;
+    transition: all 0.3s ease;
 }
 
-/* Убран стиль для активной категории */
+/* Активная категория */
+.ActiveCategory {
+    background: #F6CC00 !important;
+    color: #000 !important;
+    border-color: #F6CC00 !important;
+}
+
+.ActiveCategory .CategButton {
+    color: #000 !important;
+}
 
 .Right {
     flex: 1;
+}
+
+/* Сортировка */
+.SortBar {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 30px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.SortLabel {
+    font-family: "Inter", sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.SortSelect {
+    padding: 10px 15px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    font-family: "Inter", sans-serif;
+    font-size: 14px;
+    background: rgba(255, 255, 255, 0.05);
+    color: #FFFFFF;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.SortSelect:hover {
+    border-color: #F6CC00;
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.SortSelect:focus {
+    outline: none;
+    border-color: #F6CC00;
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.SortSelect option {
+    background: #21201C;
+    color: #FFFFFF;
+    padding: 10px;
 }
 
 /* Сетка товаров - 3 в ряд */
@@ -269,19 +330,22 @@
     }
     
     .Categories {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 10px;
         position: static;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: 10px;
     }
     
     .Category {
-        width: auto;
-        padding: 0 15px;
+        width: 100%;
     }
     
     .ProductsGrid {
         grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .SortBar {
+        justify-content: flex-start;
     }
 }
 
@@ -314,5 +378,15 @@
     
     .PaginationInfo {
         font-size: 12px;
+    }
+    
+    .SortBar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    
+    .SortSelect {
+        width: 100%;
     }
 }

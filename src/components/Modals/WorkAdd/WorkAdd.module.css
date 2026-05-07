@@ -1,0 +1,220 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,100..900;1,100..900&display=swap');
+
+.Modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    backdrop-filter: blur(5px);
+}
+
+.ModalContent {
+    background: #21201C;
+    border-radius: 20px;
+    max-width: 600px;
+    width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+.ModalContent::-webkit-scrollbar {
+    width: 8px;
+}
+
+.ModalContent::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 4px;
+}
+
+.ModalContent::-webkit-scrollbar-thumb {
+    background: #F6CC00;
+    border-radius: 4px;
+}
+
+.ModalHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px 30px;
+    border-bottom: 2px solid #F6CC00;
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.ModalHeader h2 {
+    margin: 0;
+    font-family: "Inter", sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: #F6CC00;
+}
+
+.CloseBtn {
+    background: none;
+    border: none;
+    font-size: 32px;
+    cursor: pointer;
+    color: rgba(255, 255, 255, 0.6);
+    transition: all 0.3s;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+}
+
+.CloseBtn:hover {
+    color: #F6CC00;
+    background: rgba(246, 204, 0, 0.1);
+    transform: rotate(90deg);
+}
+
+.Form {
+    padding: 30px;
+}
+
+.FormGroup {
+    margin-bottom: 25px;
+}
+
+.FormGroup label {
+    display: block;
+    margin-bottom: 10px;
+    font-family: "Inter", sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.FormGroup input,
+.FormGroup textarea,
+.FormGroup select {
+    width: 100%;
+    padding: 12px 15px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    font-family: "Inter", sans-serif;
+    font-size: 14px;
+    color: white;
+    transition: all 0.3s;
+}
+
+.FormGroup input:focus,
+.FormGroup textarea:focus,
+.FormGroup select:focus {
+    outline: none;
+    border-color: #F6CC00;
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.FormGroup input::placeholder,
+.FormGroup textarea::placeholder {
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.FormGroup textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.FormGroup select option {
+    background: #21201C;
+    color: white;
+}
+
+.FormRow {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.FormActions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.CancelBtn,
+.SubmitBtn {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-family: "Inter", sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    transition: all 0.3s;
+}
+
+.CancelBtn {
+    background: rgba(255, 255, 255, 0.05);
+    color: rgba(255, 255, 255, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.CancelBtn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    transform: translateY(-2px);
+}
+
+.SubmitBtn {
+    background: #F6CC00;
+    color: #000;
+}
+
+.SubmitBtn:hover {
+    background: #e0b800;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 20px rgba(246, 204, 0, 0.3);
+}
+
+.SubmitBtn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+@media (max-width: 768px) {
+    .ModalContent {
+        width: 95%;
+    }
+    
+    .ModalHeader {
+        padding: 20px;
+    }
+    
+    .ModalHeader h2 {
+        font-size: 20px;
+    }
+    
+    .Form {
+        padding: 20px;
+    }
+    
+    .FormRow {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+    
+    .FormActions {
+        flex-direction: column;
+    }
+    
+    .CancelBtn,
+    .SubmitBtn {
+        width: 100%;
+    }
+}

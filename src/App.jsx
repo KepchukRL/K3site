@@ -8,6 +8,7 @@ import DesignPage from './pages/DesignPage/DesignPage';
 import ProductPage from './pages/ProductPage/ProductPage';
 import AdminAuth from './pages/AdminAuth/AdminAuth';
 import AdminPage from './pages/AdminPage/AdminPage';
+import ExamplePage from './pages/ExamplesPage/ExamplePage';
 
 const ProtectedRoute = ({ children }) => {
     const token = localStorage.getItem('adminToken');
@@ -26,6 +27,8 @@ function App() {
                 <Route path="/rem" element={<RemPage />} />
                 <Route path="/design" element={<DesignPage />} />
                 <Route path="/product" element={<ProductPage />} />
+                <Route path="/example" element={<ExamplePage />} />
+
                 <Route path="/admin-auth" element={<AdminAuth />} />
                 <Route path="/admin" element={
                     <ProtectedRoute>

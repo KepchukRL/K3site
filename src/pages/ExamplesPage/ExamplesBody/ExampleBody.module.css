@@ -1,0 +1,790 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.Main {
+    width: 100%;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #121212 0%, #1a1a1a 100%);
+    padding: 60px 40px;
+}
+
+.Title {
+    text-align: left;
+    margin-bottom: 50px;
+    max-width: 1240px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.Title p {
+    font-family: "Inter", sans-serif;
+    font-size: 48px;
+    font-weight: 700;
+    color: #FFFFFF;
+    margin: 0;
+}
+
+.Inner {
+    display: flex;
+    gap: 40px;
+    max-width: 1240px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+}
+
+/* Левая панель с фильтрами */
+.Left {
+    flex: 1;
+    min-width: 300px;
+}
+
+.Options {
+    background: rgba(33, 32, 28, 0.95);
+    border-radius: 20px;
+    padding: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    position: sticky;
+    top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.FilterGroup {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.FilterGroup:not(:last-child) {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 25px;
+}
+
+.FilterGroup label {
+    display: block;
+    font-family: "Inter", sans-serif;
+    font-weight: 600;
+    color: #F6CC00;
+    margin-bottom: 15px;
+    font-size: 16px;
+}
+
+/* Двойной ползунок для выбора диапазона площади */
+.DoubleRange {
+    position: relative;
+    height: 6px;
+    margin: 20px 0;
+}
+
+.RangeTrack {
+    position: absolute;
+    width: 100%;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+}
+
+.RangeFill {
+    position: absolute;
+    height: 6px;
+    background: #F6CC00;
+    border-radius: 5px;
+}
+
+.RangeInput {
+    width: 100%;
+    height: 6px;
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.1);
+    outline: none;
+    -webkit-appearance: none;
+    cursor: pointer;
+}
+
+.RangeInput::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: #F6CC00;
+    cursor: pointer;
+    transition: all 0.3s;
+    border: 2px solid #21201C;
+}
+
+.RangeInput::-webkit-slider-thumb:hover {
+    transform: scale(1.2);
+}
+
+/* Специальные стили для двойного ползунка */
+.DoubleRange .RangeInput {
+    position: absolute;
+    width: 100%;
+    height: 6px;
+    background: transparent;
+    pointer-events: none;
+}
+
+.DoubleRange .RangeInput::-webkit-slider-thumb {
+    pointer-events: auto;
+}
+
+.RangeInputLeft {
+    z-index: 2;
+}
+
+.RangeInputRight {
+    z-index: 1;
+}
+
+.RangeLabels {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    font-family: "Inter", sans-serif;
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.RangeValues {
+    display: none;
+}
+
+/* Радиокнопки в колонку */
+.RadioGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 5px;
+}
+
+.RadioLabel {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-family: "Inter", sans-serif;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.8);
+    transition: color 0.3s;
+}
+
+.RadioLabel:hover {
+    color: #F6CC00;
+}
+
+.RadioLabel input {
+    margin-right: 10px;
+    cursor: pointer;
+    accent-color: #F6CC00;
+    width: 16px;
+    height: 16px;
+}
+
+.FilterStats {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.FilterStats p {
+    font-family: "Inter", sans-serif;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.ResetBtn {
+    padding: 8px 20px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    font-family: "Inter", sans-serif;
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.7);
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.ResetBtn:hover {
+    background: #F6CC00;
+    color: #000;
+    border-color: #F6CC00;
+}
+
+/* Правая панель со слайдером */
+.Right {
+    flex: 2;
+    min-width: 500px;
+}
+
+.SliderContainer {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    background: rgba(33, 32, 28, 0.95);
+    border-radius: 20px;
+    padding: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.SliderButton {
+    background: rgba(246, 204, 0, 0.1);
+    border: 1px solid rgba(246, 204, 0, 0.3);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    font-size: 24px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #F6CC00;
+}
+
+.SliderButton:hover {
+    background: #F6CC00;
+    color: #000;
+    transform: scale(1.05);
+}
+
+.Slide {
+    flex: 1;
+}
+
+.SlideContent {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.SlideImage {
+    flex: 1;
+    min-width: 280px;
+}
+
+.SlideImage img {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.SlideImage img:hover {
+    transform: scale(1.02);
+    border-color: #F6CC00;
+}
+
+.SlideInfo {
+    flex: 1;
+    min-width: 280px;
+}
+
+.SlideInfo h3 {
+    font-family: "Inter", sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: #F6CC00;
+    margin-bottom: 15px;
+}
+
+.Description {
+    font-family: "Inter", sans-serif;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.Details {
+    background: rgba(0, 0, 0, 0.3);
+    padding: 15px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+}
+
+.DetailItem {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.DetailItem:last-child {
+    border-bottom: none;
+}
+
+.DetailLabel {
+    font-family: "Inter", sans-serif;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.DetailItem span:last-child {
+    font-family: "Inter", sans-serif;
+    color: #F6CC00;
+    font-weight: 500;
+}
+
+.DetailsButton {
+    width: 100%;
+    padding: 12px 20px;
+    background: #F6CC00;
+    color: #000;
+    border: none;
+    border-radius: 10px;
+    font-family: "Inter", sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.DetailsButton:hover {
+    background: #e0b800;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 20px rgba(246, 204, 0, 0.3);
+}
+
+.Dots {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 30px;
+}
+
+.Dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.Dot:hover {
+    background: rgba(246, 204, 0, 0.5);
+    transform: scale(1.2);
+}
+
+.ActiveDot {
+    background: #F6CC00;
+    width: 12px;
+    height: 12px;
+}
+
+.EmptyState {
+    background: rgba(33, 32, 28, 0.95);
+    border-radius: 20px;
+    padding: 60px 30px;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.EmptyState p {
+    font-family: "Inter", sans-serif;
+    font-size: 18px;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 20px;
+}
+
+.ResetBtnEmpty {
+    padding: 10px 25px;
+    background: #F6CC00;
+    color: #000;
+    border: none;
+    border-radius: 8px;
+    font-family: "Inter", sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.ResetBtnEmpty:hover {
+    background: #e0b800;
+    transform: translateY(-2px);
+}
+
+.LoadingContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 60vh;
+}
+
+.Loader {
+    width: 50px;
+    height: 50px;
+    border: 3px solid rgba(246, 204, 0, 0.3);
+    border-top: 3px solid #F6CC00;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: 20px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.LoadingContainer p {
+    font-family: "Inter", sans-serif;
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+/* Модальное окно */
+.Modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.9);
+    backdrop-filter: blur(5px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.ModalContent {
+    background: #21201C;
+    border-radius: 20px;
+    max-width: 900px;
+    width: 90%;
+    max-height: 85vh;
+    overflow-y: auto;
+    position: relative;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.ModalContent::-webkit-scrollbar {
+    width: 8px;
+}
+
+.ModalContent::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 4px;
+}
+
+.ModalContent::-webkit-scrollbar-thumb {
+    background: #F6CC00;
+    border-radius: 4px;
+}
+
+.ModalClose {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 32px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: rgba(255, 255, 255, 0.6);
+    transition: all 0.3s ease;
+    z-index: 1;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+}
+
+.ModalClose:hover {
+    color: #F6CC00;
+    background: rgba(246, 204, 0, 0.1);
+    transform: rotate(90deg);
+}
+
+.ModalContent h2 {
+    padding: 25px 30px 15px 30px;
+    margin: 0;
+    font-family: "Inter", sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: #F6CC00;
+    border-bottom: 2px solid #F6CC00;
+    display: inline-block;
+    width: auto;
+}
+
+.ModalBody {
+    padding: 25px 30px 30px 30px;
+    display: flex;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+.ModalImage {
+    flex: 1;
+    min-width: 250px;
+}
+
+.ModalImage img {
+    width: 100%;
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.ModalInfo {
+    flex: 2;
+}
+
+.ModalDescription {
+    font-family: "Inter", sans-serif;
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.6;
+    margin-bottom: 20px;
+    font-size: 14px;
+}
+
+.ModalDetails {
+    background: rgba(0, 0, 0, 0.3);
+    padding: 20px;
+    border-radius: 12px;
+}
+
+.ModalDetail {
+    padding: 10px 0;
+    font-family: "Inter", sans-serif;
+    color: rgba(255, 255, 255, 0.8);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    font-size: 14px;
+}
+
+.ModalDetail:last-child {
+    border-bottom: none;
+}
+
+.ModalDetail strong {
+    color: #F6CC00;
+    margin-right: 10px;
+}
+
+@media (max-width: 1320px) {
+    .Title {
+        max-width: 100%;
+        padding: 0 20px;
+    }
+    
+    .Inner {
+        max-width: 100%;
+        padding: 0 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .Main {
+        padding: 30px 15px;
+    }
+    
+    .Title p {
+        font-size: 32px;
+    }
+    
+    .Inner {
+        flex-direction: column;
+        padding: 0;
+    }
+    
+    .Title {
+        padding: 0;
+    }
+    
+    .Left {
+        min-width: auto;
+    }
+    
+    .Right {
+        min-width: auto;
+    }
+    
+    .Options {
+        position: static;
+    }
+    
+    .SliderContainer {
+        flex-direction: column;
+        padding: 20px;
+    }
+    
+    .SliderButton {
+        order: 1;
+    }
+    
+    .Slide {
+        order: 0;
+    }
+    
+    .SlideContent {
+        flex-direction: column;
+    }
+    
+    .SlideImage img {
+        height: 250px;
+    }
+    
+    .SlideInfo h3 {
+        font-size: 20px;
+    }
+    
+    .RadioGroup {
+        gap: 10px;
+    }
+    
+    .RadioLabel {
+        font-size: 12px;
+    }
+    
+    .FilterStats {
+        flex-direction: column;
+        gap: 10px;
+        align-items: flex-start;
+    }
+    
+    .ModalContent h2 {
+        font-size: 20px;
+        padding: 20px 20px 10px 20px;
+    }
+    
+    .ModalBody {
+        padding: 20px;
+    }
+}
+/* Пагинация */
+.Pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 40px;
+    flex-wrap: wrap;
+}
+
+.PageBtn {
+    padding: 10px 16px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    font-family: "Inter", sans-serif;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.7);
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.PageBtn:hover:not(:disabled) {
+    background: #F6CC00;
+    color: #000;
+    border-color: #F6CC00;
+}
+
+.PageBtn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.PageNumbers {
+    display: flex;
+    gap: 8px;
+}
+
+.PageNumber {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    font-family: "Inter", sans-serif;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.7);
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.PageNumber:hover {
+    background: rgba(246, 204, 0, 0.2);
+    border-color: #F6CC00;
+    color: #F6CC00;
+}
+
+.ActivePage {
+    background: #F6CC00;
+    color: #000;
+    border-color: #F6CC00;
+}
+
+.ActivePage:hover {
+    background: #e0b800;
+    color: #000;
+}
+
+.PaginationInfo {
+    text-align: center;
+    margin-top: 20px;
+    font-family: "Inter", sans-serif;
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+@media (max-width: 768px) {
+    .Pagination {
+        gap: 5px;
+    }
+    
+    .PageBtn {
+        padding: 6px 12px;
+        font-size: 12px;
+    }
+    
+    .PageNumber {
+        width: 32px;
+        height: 32px;
+        font-size: 12px;
+    }
+    
+    .PaginationInfo {
+        font-size: 11px;
+    }
+}

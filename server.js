@@ -16,14 +16,12 @@ const JWT_SECRET = 'k3-remont-secret-key-2024';
 app.use(cors());
 app.use(express.json());
 
-// Подключение к SQLite
 const sequelize = new Sequelize({
     dialect: 'sqlite',
     storage: path.join(__dirname, 'database', 'database.sqlite'),
     logging: false
 });
 
-// Модель Admin
 const Admin = sequelize.define('Admin', {
     id: {
         type: DataTypes.INTEGER,
@@ -56,7 +54,6 @@ const Admin = sequelize.define('Admin', {
     }
 });
 
-// Модель Application
 const Application = sequelize.define('Application', {
     id: {
         type: DataTypes.INTEGER,
@@ -92,7 +89,6 @@ const Application = sequelize.define('Application', {
     timestamps: true
 });
 
-// Модель Product
 const Product = sequelize.define('Product', {
     id: {
         type: DataTypes.INTEGER,
@@ -140,7 +136,58 @@ const Product = sequelize.define('Product', {
     timestamps: true
 });
 
-// Middleware для проверки токена
+// Новая модель ExampleWork
+const ExampleWork = sequelize.define('ExampleWork', {
+    id: {
+        type: DataTypes.INTEGER,
+        primaryKey: true,
+        autoIncrement: true
+    },
+    title: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    description: {
+        type: DataTypes.TEXT,
+        allowNull: false
+    },
+    square: {
+        type: DataTypes.INTEGER,
+        allowNull: false
+    },
+    price: {
+        type: DataTypes.DECIMAL(10, 2),
+        allowNull: false
+    },
+    rooms: {
+        type: DataTypes.INTEGER,
+        allowNull: false
+    },
+    buildingType: {
+        type: DataTypes.ENUM('new', 'secondary'),
+        allowNull: false
+    },
+    city: {
+        type: DataTypes.ENUM('Оренбург', 'Калининград', 'Санкт-Петербург', 'Москва'),
+        allowNull: false
+    },
+    image: {
+        type: DataTypes.STRING,
+        allowNull: true
+    },
+    images: {
+        type: DataTypes.TEXT,
+        allowNull: true
+    },
+    status: {
+        type: DataTypes.ENUM('active', 'inactive'),
+        defaultValue: 'active'
+    }
+}, {
+    tableName: 'example_works',
+    timestamps: true
+});
+
 const verifyToken = (req, res, next) => {
     const token = req.headers['authorization']?.split(' ')[1];
     
@@ -157,7 +204,7 @@ const verifyToken = (req, res, next) => {
     }
 };
 
-// ============ АВТОРИЗАЦИЯ ============
+// Auth endpoints
 app.post('/api/auth/login', async (req, res) => {
     try {
         const { username, password } = req.body;
@@ -167,7 +214,7 @@ app.post('/api/auth/login', async (req, res) => {
         const admin = await Admin.findOne({ where: { username } });
         
         if (!admin) {
-            console.log('❌ Администратор не найден');
+            console.log('Администратор не найден');
             return res.status(401).json({ 
                 success: false, 
                 message: 'Неверный логин или пароль' 
@@ -177,7 +224,7 @@ app.post('/api/auth/login', async (req, res) => {
         const isValidPassword = await bcrypt.compare(password, admin.password);
         
         if (isValidPassword) {
-            console.log('✅ Пароль верный!');
+            console.log('Пароль верный!');
             
             const token = jwt.sign(
                 { id: admin.id, username: admin.username }, 
@@ -192,7 +239,7 @@ app.post('/api/auth/login', async (req, res) => {
                 admin: { id: admin.id, username: admin.username }
             });
         } else {
-            console.log('❌ Неверный пароль');
+            console.log('Неверный пароль');
             return res.status(401).json({ 
                 success: false, 
                 message: 'Неверный логин или пароль' 
@@ -204,7 +251,7 @@ app.post('/api/auth/login', async (req, res) => {
     }
 });
 
-// ============ ЗАЯВКИ ============
+// Applications endpoints
 app.get('/api/applications', verifyToken, async (req, res) => {
     try {
         const applications = await Application.findAll({
@@ -260,9 +307,7 @@ app.put('/api/applications/:id/status', verifyToken, async (req, res) => {
     }
 });
 
-// ============ ТОВАРЫ ============
-
-// Получить все товары
+// Products endpoints
 app.get('/api/products', async (req, res) => {
     try {
         const { category } = req.query;
@@ -280,7 +325,6 @@ app.get('/api/products', async (req, res) => {
     }
 });
 
-// Получить товар по ID
 app.get('/api/products/:id', async (req, res) => {
     try {
         const product = await Product.findByPk(req.params.id);
@@ -294,7 +338,6 @@ app.get('/api/products/:id', async (req, res) => {
     }
 });
 
-// Добавить товар (админ)
 app.post('/api/products', verifyToken, async (req, res) => {
     try {
         const { name, description, fullDescription, price, category, image } = req.body;
@@ -322,7 +365,6 @@ app.post('/api/products', verifyToken, async (req, res) => {
     }
 });
 
-// Обновить товар (админ)
 app.put('/api/products/:id', verifyToken, async (req, res) => {
     try {
         const product = await Product.findByPk(req.params.id);
@@ -338,7 +380,6 @@ app.put('/api/products/:id', verifyToken, async (req, res) => {
     }
 });
 
-// Удалить товар (админ)
 app.delete('/api/products/:id', verifyToken, async (req, res) => {
     try {
         const product = await Product.findByPk(req.params.id);
@@ -354,14 +395,109 @@ app.delete('/api/products/:id', verifyToken, async (req, res) => {
     }
 });
 
-// ============ ЗАПУСК СЕРВЕРА ============
+// Example Works endpoints
+app.get('/api/example-works', async (req, res) => {
+    try {
+        const { city, status } = req.query;
+        const where = {};
+        
+        if (city && city !== 'all') {
+            where.city = city;
+        }
+        
+        if (status) {
+            where.status = status;
+        }
+        
+        const works = await ExampleWork.findAll({ 
+            where,
+            order: [['createdAt', 'DESC']]
+        });
+        res.json({ success: true, data: works });
+    } catch (error) {
+        console.error('Ошибка получения примеров работ:', error);
+        res.status(500).json({ success: false, message: 'Ошибка сервера' });
+    }
+});
+
+app.get('/api/example-works/:id', async (req, res) => {
+    try {
+        const work = await ExampleWork.findByPk(req.params.id);
+        if (!work) {
+            return res.status(404).json({ success: false, message: 'Работа не найдена' });
+        }
+        res.json({ success: true, data: work });
+    } catch (error) {
+        console.error('Ошибка получения работы:', error);
+        res.status(500).json({ success: false, message: 'Ошибка сервера' });
+    }
+});
+
+app.post('/api/example-works', verifyToken, async (req, res) => {
+    try {
+        const { title, description, square, price, rooms, buildingType, city, image, images } = req.body;
+        
+        const work = await ExampleWork.create({
+            title,
+            description,
+            square: parseInt(square),
+            price: parseFloat(price),
+            rooms: parseInt(rooms),
+            buildingType,
+            city,
+            image: image || '/Image/placeholder.png',
+            images: images || null,
+            status: 'active'
+        });
+        
+        res.status(201).json({ 
+            success: true, 
+            message: 'Пример работы добавлен', 
+            data: work 
+        });
+    } catch (error) {
+        console.error('Ошибка добавления работы:', error);
+        res.status(500).json({ success: false, message: 'Ошибка сервера: ' + error.message });
+    }
+});
+
+app.put('/api/example-works/:id', verifyToken, async (req, res) => {
+    try {
+        const work = await ExampleWork.findByPk(req.params.id);
+        if (!work) {
+            return res.status(404).json({ success: false, message: 'Работа не найдена' });
+        }
+        
+        await work.update(req.body);
+        res.json({ success: true, message: 'Пример работы обновлен', data: work });
+    } catch (error) {
+        console.error('Ошибка обновления работы:', error);
+        res.status(500).json({ success: false, message: 'Ошибка сервера' });
+    }
+});
+
+app.delete('/api/example-works/:id', verifyToken, async (req, res) => {
+    try {
+        const work = await ExampleWork.findByPk(req.params.id);
+        if (!work) {
+            return res.status(404).json({ success: false, message: 'Работа не найдена' });
+        }
+        
+        await work.destroy();
+        res.json({ success: true, message: 'Пример работы удален' });
+    } catch (error) {
+        console.error('Ошибка удаления работы:', error);
+        res.status(500).json({ success: false, message: 'Ошибка сервера' });
+    }
+});
+
 async function startServer() {
     try {
         await sequelize.authenticate();
-        console.log('✅ База данных SQLite подключена');
+        console.log('База данных SQLite подключена');
         
         await sequelize.sync({ alter: true });
-        console.log('✅ Модели синхронизированы');
+        console.log('Модели синхронизированы');
         
         // Проверяем, есть ли администратор
         const adminExists = await Admin.findOne({ where: { username: 'Admin' } });
@@ -370,10 +506,9 @@ async function startServer() {
                 username: 'Admin',
                 password: '88005553535Admin'
             });
-            console.log('✅ Администратор по умолчанию создан');
+            console.log('Администратор по умолчанию создан');
         }
         
-        // Добавляем тестовые товары если их нет
         const productsCount = await Product.count();
         if (productsCount === 0) {
             await Product.bulkCreate([
@@ -402,23 +537,61 @@ async function startServer() {
                     image: '/Image/prim3.png'
                 }
             ]);
-            console.log('✅ Добавлены тестовые товары');
+            console.log('Добавлены тестовые товары');
         }
         
-        console.log('\n📋 Данные для входа:');
+        // Добавляем тестовые примеры работ, если их нет
+        const worksCount = await ExampleWork.count();
+        if (worksCount === 0) {
+            await ExampleWork.bulkCreate([
+                {
+                    title: 'Современная квартира в ЖК "Алые Паруса"',
+                    description: 'Полный ремонт 2-комнатной квартиры с использованием премиальных материалов',
+                    square: 65,
+                    price: 1850000,
+                    rooms: 2,
+                    buildingType: 'new',
+                    city: 'Оренбург',
+                    image: '/Image/example1.jpg'
+                },
+                {
+                    title: 'Евроремонт в сталинском доме',
+                    description: 'Реконструкция и ремонт квартиры в историческом здании',
+                    square: 85,
+                    price: 2450000,
+                    rooms: 3,
+                    buildingType: 'secondary',
+                    city: 'Москва',
+                    image: '/Image/example2.jpg'
+                },
+                {
+                    title: 'Студия с умной планировкой',
+                    description: 'Дизайн-проект и ремонт 1-комнатной квартиры-студии',
+                    square: 42,
+                    price: 1250000,
+                    rooms: 1,
+                    buildingType: 'new',
+                    city: 'Санкт-Петербург',
+                    image: '/Image/example3.jpg'
+                }
+            ]);
+            console.log('Добавлены тестовые примеры работ');
+        }
+        
+        console.log('\nДанные для входа:');
         console.log('   Логин: Admin');
         console.log('   Пароль: 88005553535Admin\n');
         
         app.listen(PORT, () => {
             console.log('='.repeat(60));
-            console.log('   🚀 СЕРВЕР K3 РЕМОНТ ЗАПУЩЕН!');
+            console.log('    СЕРВЕР K3 РЕМОНТ ЗАПУЩЕН!');
             console.log('='.repeat(60));
-            console.log(`   📍 API сервер: http://localhost:${PORT}`);
-            console.log(`   🌐 Фронтенд: http://localhost:5173`);
+            console.log(`    API сервер: http://localhost:${PORT}`);
+            console.log(`    Фронтенд: http://localhost:5173`);
             console.log('='.repeat(60) + '\n');
         });
     } catch (error) {
-        console.error('❌ Ошибка при запуске сервера:', error);
+        console.error('Ошибка при запуске сервера:', error);
     }
 }
 

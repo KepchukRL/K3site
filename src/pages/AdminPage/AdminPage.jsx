@@ -3,15 +3,23 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import ProductAdd from '../../components/Modals/ProductAdd/ProductAdd';
 import RedactPage from '../../components/Modals/RedactPage/RedactPage';
+import WorkAdd from '../../components/Modals/WorkAdd/WorkAdd';
+import WorkEdit from '../../components/Modals/WorkEdit/WorkEdit';
 import styles from './AdminPage.module.css';
 
 function AdminPage() {
     const [applications, setApplications] = useState([]);
     const [products, setProducts] = useState([]);
+    const [works, setWorks] = useState([]);
     const [showProductAdd, setShowProductAdd] = useState(false);
+    const [showWorkAdd, setShowWorkAdd] = useState(false);
     const [editingProduct, setEditingProduct] = useState(null);
+    const [editingWork, setEditingWork] = useState(null);
     const [adminData, setAdminData] = useState(null);
     const [activeTab, setActiveTab] = useState('consultation');
+    const [searchTerm, setSearchTerm] = useState('');
+    const [selectedCategory, setSelectedCategory] = useState('all');
+    
     const navigate = useNavigate();
 
     const axiosInstance = axios.create({
@@ -41,6 +49,7 @@ function AdminPage() {
         setAdminData(JSON.parse(admin));
         fetchApplications();
         fetchProducts();
+        fetchWorks();
     }, [navigate]);
 
     const fetchApplications = async () => {
@@ -71,6 +80,20 @@ function AdminPage() {
         }
     };
 
+    const fetchWorks = async () => {
+        try {
+            const response = await axiosInstance.get('/example-works');
+            if (response.data.success) {
+                setWorks(response.data.data);
+            }
+        } catch (error) {
+            if (error.response?.status === 401) {
+                logout();
+            }
+            console.error('Ошибка загрузки примеров работ:', error);
+        }
+    };
+
     const updateStatus = async (id, status) => {
         try {
             await axiosInstance.put(`/applications/${id}/status`, { status });
@@ -91,29 +114,57 @@ function AdminPage() {
         }
     };
 
+    const deleteWork = async (id) => {
+        if (window.confirm('Удалить этот пример работы?')) {
+            try {
+                await axiosInstance.delete(`/example-works/${id}`);
+                fetchWorks();
+            } catch (error) {
+                console.error('Ошибка удаления:', error);
+            }
+        }
+    };
+
     const logout = () => {
         localStorage.removeItem('adminToken');
         localStorage.removeItem('adminData');
         navigate('/admin-auth');
     };
 
-    const consultationApps = applications.filter(app => app.type === 'consultation');
-    const callbackApps = applications.filter(app => app.type === 'callback');
-
-    const getStatusText = (status) => {
-        switch(status) {
-            case 'free': return 'Свободный';
-            case 'in_progress': return 'В процессе';
-            case 'completed': return 'Закончен';
-            default: return 'Неизвестно';
-        }
+    const getUniqueCategories = () => {
+        const categories = products.map(product => product.category).filter(Boolean);
+        return ['all', ...new Set(categories)];
     };
+
+    const getFilteredProducts = () => {
+        let filtered = products;
+        
+        if (selectedCategory !== 'all') {
+            filtered = filtered.filter(product => product.category === selectedCategory);
+        }
+        
+        if (searchTerm.trim()) {
+            const searchLower = searchTerm.toLowerCase();
+            filtered = filtered.filter(product => 
+                product.name?.toLowerCase().includes(searchLower) ||
+                product.description?.toLowerCase().includes(searchLower) ||
+                product.category?.toLowerCase().includes(searchLower)
+            );
+        }
+        
+        return filtered;
+    };
+
+    const filteredProducts = getFilteredProducts();
+    const categories = getUniqueCategories();
+
+    const consultationApps = applications.filter(app => app.type === 'consultation');
 
     const getStatusColor = (status) => {
         switch(status) {
             case 'free': return '#27ae60';
             case 'in_progress': return '#f39c12';
-            case 'completed': return '#3498db';
+            case 'completed': return '#F6CC00';
             default: return '#95a5a6';
         }
     };
@@ -131,23 +182,27 @@ function AdminPage() {
             </div>
             
             <div className={styles.Inner}>
-                {/* Табы */}
                 <div className={styles.Tabs}>
                     <button 
                         className={`${styles.Tab} ${activeTab === 'consultation' ? styles.ActiveTab : ''}`}
                         onClick={() => setActiveTab('consultation')}
                     >
-                        📋 Заявки на консультацию ({consultationApps.length})
+                        Заявки на консультацию ({consultationApps.length})
                     </button>
                     <button 
                         className={`${styles.Tab} ${activeTab === 'products' ? styles.ActiveTab : ''}`}
                         onClick={() => setActiveTab('products')}
                     >
-                        🛒 Управление товарами ({products.length})
+                        Управление товарами ({products.length})
+                    </button>
+                    <button 
+                        className={`${styles.Tab} ${activeTab === 'works' ? styles.ActiveTab : ''}`}
+                        onClick={() => setActiveTab('works')}
+                    >
+                        Примеры работ ({works.length})
                     </button>
                 </div>
 
-                {/* Заявки на консультацию */}
                 {activeTab === 'consultation' && (
                     <div className={styles.ConsulBlock}>
                         <div className={styles.SectionTitle}>
@@ -155,7 +210,7 @@ function AdminPage() {
                         </div>
                         {consultationApps.length === 0 ? (
                             <div className={styles.EmptyMessage}>
-                                <p>📭 Нет заявок на консультацию</p>
+                                <p>Нет заявок на консультацию</p>
                             </div>
                         ) : (
                             <div className={styles.ApplicationsList}>
@@ -163,19 +218,19 @@ function AdminPage() {
                                     <div key={app.id} className={styles.ApplicationCard}>
                                         <div className={styles.CardHeader}>
                                             <span className={styles.Date}>
-                                                📅 {new Date(app.createdAt).toLocaleDateString('ru-RU')}
+                                                {new Date(app.createdAt).toLocaleDateString('ru-RU')}
                                             </span>
                                             <span className={styles.Time}>
-                                                🕐 {new Date(app.createdAt).toLocaleTimeString('ru-RU')}
+                                                {new Date(app.createdAt).toLocaleTimeString('ru-RU')}
                                             </span>
                                         </div>
                                         <div className={styles.CardBody}>
                                             <div className={styles.InfoRow}>
-                                                <span className={styles.Label}>👤 ФИО:</span>
+                                                <span className={styles.Label}>ФИО:</span>
                                                 <span className={styles.Value}>{app.name}</span>
                                             </div>
                                             <div className={styles.InfoRow}>
-                                                <span className={styles.Label}>📞 Телефон:</span>
+                                                <span className={styles.Label}>Телефон:</span>
                                                 <span className={styles.Value}>
                                                     <a href={`tel:${app.phone}`} className={styles.PhoneLink}>
                                                         {app.phone}
@@ -183,7 +238,7 @@ function AdminPage() {
                                                 </span>
                                             </div>
                                             <div className={styles.InfoRow}>
-                                                <span className={styles.Label}>💬 Комментарий:</span>
+                                                <span className={styles.Label}>Комментарий:</span>
                                                 <span className={styles.Value}>{app.comment || '—'}</span>
                                             </div>
                                         </div>
@@ -196,9 +251,9 @@ function AdminPage() {
                                                     className={styles.StatusSelect}
                                                     style={{ borderColor: getStatusColor(app.status) }}
                                                 >
-                                                    <option value="free">🟢 Свободный</option>
-                                                    <option value="in_progress">🟡 В процессе</option>
-                                                    <option value="completed">🔵 Закончен</option>
+                                                    <option value="free">Свободный</option>
+                                                    <option value="in_progress">В процессе</option>
+                                                    <option value="completed">Закончен</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -209,25 +264,92 @@ function AdminPage() {
                     </div>
                 )}
 
-                {/* Управление товарами */}
                 {activeTab === 'products' && (
                     <div className={styles.ProductsBlock}>
                         <div className={styles.SectionTitle}>
                             <p>Управление товарами</p>
                         </div>
+                        
+                        <div className={styles.FilterPanel}>
+                            <div className={styles.SearchBox}>
+                                <input
+                                    type="text"
+                                    placeholder="Поиск по названию, описанию или категории..."
+                                    value={searchTerm}
+                                    onChange={(e) => setSearchTerm(e.target.value)}
+                                    className={styles.SearchInput}
+                                />
+                                {searchTerm && (
+                                    <button 
+                                        onClick={() => setSearchTerm('')}
+                                        className={styles.ClearSearchBtn}
+                                    >
+                                        ✕
+                                    </button>
+                                )}
+                            </div>
+                            
+                            <div className={styles.CategoryFilter}>
+                                <label className={styles.FilterLabel}>Фильтр по категории:</label>
+                                <select 
+                                    value={selectedCategory} 
+                                    onChange={(e) => setSelectedCategory(e.target.value)}
+                                    className={styles.CategorySelect}
+                                >
+                                    {categories.map(category => (
+                                        <option key={category} value={category}>
+                                            {category === 'all' ? 'Все категории' : category}
+                                        </option>
+                                    ))}
+                                </select>
+                            </div>
+                            
+                            <div className={styles.FilterStats}>
+                                <span className={styles.ProductsCount}>
+                                    Найдено товаров: {filteredProducts.length} из {products.length}
+                                </span>
+                                {(searchTerm || selectedCategory !== 'all') && (
+                                    <button 
+                                        onClick={() => {
+                                            setSearchTerm('');
+                                            setSelectedCategory('all');
+                                        }}
+                                        className={styles.ResetFiltersBtn}
+                                    >
+                                        Сбросить фильтры
+                                    </button>
+                                )}
+                            </div>
+                        </div>
+                        
                         <div className={styles.AddButtonWrapper}>
                             <button onClick={() => setShowProductAdd(true)} className={styles.AddButton}>
                                 + Добавить товар
                             </button>
                         </div>
                         
-                        {products.length === 0 ? (
+                        {filteredProducts.length === 0 ? (
                             <div className={styles.EmptyMessage}>
-                                <p>📭 Нет добавленных товаров</p>
+                                <p>
+                                    {searchTerm || selectedCategory !== 'all' 
+                                        ? 'Товары не найдены по заданным критериям' 
+                                        : 'Нет добавленных товаров'}
+                                </p>
+                                {(searchTerm || selectedCategory !== 'all') && (
+                                    <button 
+                                        onClick={() => {
+                                            setSearchTerm('');
+                                            setSelectedCategory('all');
+                                        }}
+                                        className={styles.ShowAllBtn}
+                                    >
+                                        Показать все товары
+                                    </button>
+                                )}
                             </div>
                         ) : (
                             <div className={styles.ProductsGrid}>
-                                {products.map(product => (
+                                {filteredProducts.map(product => (
                                     <div key={product.id} className={styles.ProductCard}>
                                         <div className={styles.ProductImage}>
                                             <img 
@@ -249,13 +371,74 @@ function AdminPage() {
                                                 onClick={() => setEditingProduct(product)}
                                                 className={styles.EditBtn}
                                             >
-                                                ✏️ Редактировать
+                                                Редактировать
                                             </button>
                                             <button 
                                                 onClick={() => deleteProduct(product.id)}
                                                 className={styles.DeleteBtn}
                                             >
-                                                🗑️ Удалить
+                                                Удалить
+                                            </button>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        )}
+                    </div>
+                )}
+
+                {activeTab === 'works' && (
+                    <div className={styles.WorksBlock}>
+                        <div className={styles.SectionTitle}>
+                            <p>Управление примерами работ</p>
+                        </div>
+                        
+                        <div className={styles.AddButtonWrapper}>
+                            <button onClick={() => setShowWorkAdd(true)} className={styles.AddButton}>
+                                + Добавить пример работы
+                            </button>
+                        </div>
+                        
+                        {works.length === 0 ? (
+                            <div className={styles.EmptyMessage}>
+                                <p>Нет добавленных примеров работ</p>
+                            </div>
+                        ) : (
+                            <div className={styles.WorksGrid}>
+                                {works.map(work => (
+                                    <div key={work.id} className={styles.WorkCard}>
+                                        <div className={styles.WorkImage}>
+                                            <img 
+                                                src={work.image || '/Image/placeholder.png'} 
+                                                alt={work.title}
+                                                onError={(e) => {
+                                                    e.target.src = '/Image/placeholder.png';
+                                                }}
+                                            />
+                                        </div>
+                                        <div className={styles.WorkInfo}>
+                                            <p className={styles.WorkTitle}>{work.title}</p>
+                                            <p className={styles.WorkCity}>Город: {work.city}</p>
+                                            <p className={styles.WorkDescription}>{work.description}</p>
+                                            <div className={styles.WorkDetails}>
+                                                <span>Площадь: {work.square} м²</span>
+                                                <span>Стоимость: {work.price.toLocaleString()} ₽</span>
+                                                <span>Комнат: {work.rooms}</span>
+                                                <span>{work.buildingType === 'new' ? 'Новостройка' : 'Вторичка'}</span>
+                                            </div>
+                                        </div>
+                                        <div className={styles.WorkActions}>
+                                            <button 
+                                                onClick={() => setEditingWork(work)}
+                                                className={styles.EditBtn}
+                                            >
+                                                Редактировать
+                                            </button>
+                                            <button 
+                                                onClick={() => deleteWork(work.id)}
+                                                className={styles.DeleteBtn}
+                                            >
+                                                Удалить
                                             </button>
                                         </div>
                                     </div>
@@ -278,6 +461,21 @@ function AdminPage() {
                     productId={editingProduct.id}
                     onClose={() => setEditingProduct(null)}
                     onProductUpdated={fetchProducts}
+                />
+            )}
+
+            {showWorkAdd && (
+                <WorkAdd 
+                    onClose={() => setShowWorkAdd(false)}
+                    onWorkAdded={fetchWorks}
+                />
+            )}
+            
+            {editingWork && (
+                <WorkEdit 
+                    work={editingWork}
+                    onClose={() => setEditingWork(null)}
+                    onWorkUpdated={fetchWorks}
                 />
             )}
         </div>

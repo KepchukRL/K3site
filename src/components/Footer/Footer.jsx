@@ -7,7 +7,7 @@ function Footer() {
 
     const menuItems = [
         { name: "СТРОИТЕЛЬСТВО", path: "/" },
-        { name: "ДИЗАЙН", path: "/design" },
+        { name: "ДИЗАЙН", path: "/example" },
         { name: "РЕМОНТ ПОД КЛЮЧ", path: "/rem" },
         { name: "МАТЕРИАЛЫ", path: "/product" },
         { name: "О НАС", path: "/about" }
