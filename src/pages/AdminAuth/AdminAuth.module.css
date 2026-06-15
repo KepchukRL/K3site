@@ -6,6 +6,7 @@
     align-items: center;
     min-height: 100vh;
     background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+    padding: 20px;
 }
 
 .Modal {
@@ -33,6 +34,7 @@
     border-radius: 10px;
     font-size: 16px;
     font-family: "Inter", sans-serif;
+    transition: border-color 0.3s;
 }
 
 .Modal input:focus {
@@ -64,6 +66,10 @@
     cursor: not-allowed;
 }
 
+.Modal button:active:not(:disabled) {
+    transform: translateY(0);
+}
+
 .Error {
     background: #f8d7da;
     color: #721c24;
@@ -73,4 +79,123 @@
     text-align: center;
     font-family: "Inter", sans-serif;
     font-size: 14px;
+}
+
+/* ============================================= */
+/* АДАПТИВ ДЛЯ ПЛАНШЕТОВ (1024px)                */
+/* ============================================= */
+@media (max-width: 1024px) {
+    .Main {
+        padding: 30px;
+    }
+
+    .Modal {
+        padding: 35px;
+        max-width: 420px;
+    }
+
+    .Modal h2 {
+        font-size: 26px;
+        margin-bottom: 25px;
+    }
+}
+
+/* ============================================= */
+/* АДАПТИВ ДЛЯ МАЛЕНЬКИХ ПЛАНШЕТОВ (768px)        */
+/* ============================================= */
+@media (max-width: 768px) {
+    .Main {
+        padding: 20px;
+        align-items: flex-start;
+        padding-top: 60px;
+    }
+
+    .Modal {
+        padding: 30px;
+        max-width: 380px;
+        border-radius: 16px;
+    }
+
+    .Modal h2 {
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+
+    .Modal input {
+        padding: 10px 12px;
+        margin-bottom: 15px;
+        font-size: 15px;
+    }
+
+    .Modal button {
+        padding: 10px;
+        font-size: 16px;
+    }
+}
+
+/* ============================================= */
+/* АДАПТИВ ДЛЯ ТЕЛЕФОНОВ (480px)                 */
+/* ============================================= */
+@media (max-width: 480px) {
+    .Main {
+        padding: 0;
+        align-items: center;
+    }
+
+    .Modal {
+        min-height: 100vh;
+        border-radius: 0;
+        padding: 40px 20px 30px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .Modal h2 {
+        font-size: 24px;
+        margin-bottom: 25px;
+    }
+
+    .Modal input {
+        padding: 12px 14px;
+        margin-bottom: 16px;
+        font-size: 16px;
+        border-radius: 8px;
+    }
+
+    .Modal button {
+        padding: 14px;
+        font-size: 16px;
+        border-radius: 8px;
+    }
+
+    .Error {
+        font-size: 13px;
+        padding: 10px;
+    }
+}
+
+/* ============================================= */
+/* АДАПТИВ ДЛЯ МАЛЕНЬКИХ ТЕЛЕФОНОВ (375px)        */
+/* ============================================= */
+@media (max-width: 375px) {
+    .Modal {
+        padding: 30px 16px 25px;
+    }
+
+    .Modal h2 {
+        font-size: 22px;
+        margin-bottom: 20px;
+    }
+
+    .Modal input {
+        padding: 10px 12px;
+        margin-bottom: 14px;
+        font-size: 15px;
+    }
+
+    .Modal button {
+        padding: 12px;
+        font-size: 15px;
+    }
 }

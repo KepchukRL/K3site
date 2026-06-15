@@ -12,13 +12,14 @@
     justify-content: center;
     z-index: 1000;
     backdrop-filter: blur(5px);
+    padding: 20px;
 }
 
 .ModalContent {
     background: #21201C;
     border-radius: 20px;
     max-width: 600px;
-    width: 90%;
+    width: 100%;
     max-height: 90vh;
     overflow-y: auto;
     border: 1px solid rgba(255, 255, 255, 0.1);
@@ -46,6 +47,9 @@
     padding: 25px 30px;
     border-bottom: 2px solid #F6CC00;
     background: rgba(0, 0, 0, 0.3);
+    position: sticky;
+    top: 0;
+    z-index: 1;
 }
 
 .ModalHeader h2 {
@@ -69,6 +73,7 @@
     align-items: center;
     justify-content: center;
     border-radius: 8px;
+    flex-shrink: 0;
 }
 
 .CloseBtn:hover {
@@ -187,7 +192,12 @@
     transform: none;
 }
 
-/* Стили для статуса активен/неактивен */
+.SubmitBtn:active:not(:disabled),
+.CancelBtn:active {
+    transform: translateY(0);
+}
+
+/* Статус-бейджи */
 .StatusBadge {
     display: inline-block;
     padding: 4px 10px;
@@ -209,9 +219,42 @@
     border: 1px solid rgba(231, 76, 60, 0.3);
 }
 
-@media (max-width: 768px) {
+/* ============================================= */
+/* АДАПТИВ ДЛЯ ПЛАНШЕТОВ (1024px)                */
+/* ============================================= */
+@media (max-width: 1024px) {
     .ModalContent {
-        width: 95%;
+        max-width: 550px;
+    }
+
+    .ModalHeader {
+        padding: 22px 25px;
+    }
+
+    .ModalHeader h2 {
+        font-size: 22px;
+    }
+
+    .Form {
+        padding: 25px;
+    }
+
+    .FormGroup {
+        margin-bottom: 20px;
+    }
+}
+
+/* ============================================= */
+/* АДАПТИВ (768px) — существующий, сохранён        */
+/* ============================================= */
+@media (max-width: 768px) {
+    .Modal {
+        padding: 15px;
+    }
+
+    .ModalContent {
+        width: 100%;
+        border-radius: 16px;
     }
     
     .ModalHeader {
@@ -238,5 +281,122 @@
     .CancelBtn,
     .SubmitBtn {
         width: 100%;
+    }
+}
+
+/* ============================================= */
+/* АДАПТИВ ДЛЯ ТЕЛЕФОНОВ (480px)                 */
+/* ============================================= */
+@media (max-width: 480px) {
+    .Modal {
+        padding: 0;
+        align-items: flex-end;
+    }
+
+    .ModalContent {
+        border-radius: 16px 16px 0 0;
+        max-height: 92vh;
+    }
+
+    .ModalHeader {
+        padding: 16px;
+        border-radius: 16px 16px 0 0;
+    }
+
+    .ModalHeader h2 {
+        font-size: 18px;
+    }
+
+    .CloseBtn {
+        font-size: 28px;
+        width: 32px;
+        height: 32px;
+    }
+
+    .Form {
+        padding: 16px;
+    }
+
+    .FormGroup {
+        margin-bottom: 16px;
+    }
+
+    .FormGroup label {
+        font-size: 13px;
+        margin-bottom: 8px;
+    }
+
+    .FormGroup input,
+    .FormGroup textarea,
+    .FormGroup select {
+        padding: 10px 12px;
+        font-size: 14px;
+        border-radius: 8px;
+    }
+
+    .FormActions {
+        margin-top: 20px;
+        padding-top: 15px;
+        gap: 10px;
+    }
+
+    .CancelBtn,
+    .SubmitBtn {
+        padding: 12px 20px;
+        font-size: 14px;
+        border-radius: 8px;
+    }
+
+    .StatusBadge {
+        font-size: 11px;
+        padding: 3px 8px;
+    }
+}
+
+/* ============================================= */
+/* АДАПТИВ ДЛЯ МАЛЕНЬКИХ ТЕЛЕФОНОВ (375px)        */
+/* ============================================= */
+@media (max-width: 375px) {
+    .ModalContent {
+        border-radius: 12px 12px 0 0;
+    }
+
+    .ModalHeader {
+        padding: 14px;
+    }
+
+    .ModalHeader h2 {
+        font-size: 16px;
+    }
+
+    .CloseBtn {
+        font-size: 24px;
+        width: 28px;
+        height: 28px;
+    }
+
+    .Form {
+        padding: 14px;
+    }
+
+    .FormGroup {
+        margin-bottom: 14px;
+    }
+
+    .FormGroup label {
+        font-size: 12px;
+    }
+
+    .FormGroup input,
+    .FormGroup textarea,
+    .FormGroup select {
+        padding: 8px 10px;
+        font-size: 13px;
+    }
+
+    .CancelBtn,
+    .SubmitBtn {
+        padding: 10px 16px;
+        font-size: 13px;
     }
 }

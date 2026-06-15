@@ -13,6 +13,7 @@
     align-items: center;
     z-index: 2000;
     animation: fadeIn 0.3s ease;
+    padding: 20px;
 }
 
 .Modal {
@@ -25,12 +26,30 @@
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
     animation: slideIn 0.3s ease;
     border: 1px solid rgba(246, 204, 0, 0.3);
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.Modal::-webkit-scrollbar {
+    width: 6px;
+}
+
+.Modal::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 3px;
+}
+
+.Modal::-webkit-scrollbar-thumb {
+    background: #F6CC00;
+    border-radius: 3px;
 }
 
 .CloseButton {
-    position: absolute;
-    top: 20px;
-    right: 20px;
+    position: sticky;
+    top: 0;
+    float: right;
+    margin-right: 0;
+    margin-bottom: -36px;
     background: rgba(255, 255, 255, 0.1);
     border: none;
     font-size: 28px;
@@ -44,6 +63,8 @@
     justify-content: center;
     transition: all 0.3s ease;
     font-family: "Inter", sans-serif;
+    z-index: 1;
+    flex-shrink: 0;
 }
 
 .CloseButton:hover {
@@ -138,6 +159,10 @@
     cursor: not-allowed;
 }
 
+.SubmitButton:active:not(:disabled) {
+    transform: translateY(0);
+}
+
 .Success {
     background: rgba(39, 174, 96, 0.2);
     border: 1px solid #27ae60;
@@ -162,47 +187,6 @@
     font-size: 14px;
 }
 
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-}
-
-@keyframes slideIn {
-    from {
-        transform: translateY(-50px);
-        opacity: 0;
-    }
-    to {
-        transform: translateY(0);
-        opacity: 1;
-    }
-}
-
-@media (max-width: 768px) {
-    .Modal {
-        padding: 30px 25px;
-        width: 95%;
-    }
-    
-    .Header h2 {
-        font-size: 22px;
-    }
-    
-    .FormGroup input,
-    .FormGroup textarea {
-        padding: 12px 14px;
-        font-size: 14px;
-    }
-    
-    .SubmitButton {
-        padding: 12px;
-        font-size: 14px;
-    }
-}
 /* Стили для валидации */
 .ErrorInput {
     border-color: #e74c3c !important;
@@ -235,4 +219,162 @@
     font-size: 11px;
     font-family: "Inter", sans-serif;
     margin-top: 5px;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* ============================================= */
+/* АДАПТИВ (1024px)                              */
+/* ============================================= */
+@media (max-width: 1024px) {
+    .Modal {
+        padding: 35px;
+    }
+
+    .Header h2 {
+        font-size: 26px;
+    }
+}
+
+/* ============================================= */
+/* АДАПТИВ (768px) — существующий, сохранён        */
+/* ============================================= */
+@media (max-width: 768px) {
+    .Overlay {
+        padding: 15px;
+    }
+
+    .Modal {
+        padding: 30px 25px;
+        width: 95%;
+        border-radius: 16px;
+    }
+    
+    .Header h2 {
+        font-size: 22px;
+    }
+    
+    .FormGroup input,
+    .FormGroup textarea {
+        padding: 12px 14px;
+        font-size: 14px;
+    }
+    
+    .SubmitButton {
+        padding: 12px;
+        font-size: 14px;
+    }
+}
+
+/* ============================================= */
+/* АДАПТИВ ДЛЯ ТЕЛЕФОНОВ (480px)                 */
+/* ============================================= */
+@media (max-width: 480px) {
+    .Overlay {
+        padding: 0;
+        align-items: flex-end;
+    }
+
+    .Modal {
+        padding: 24px 16px;
+        width: 100%;
+        border-radius: 16px 16px 0 0;
+        max-height: 92vh;
+    }
+
+    .CloseButton {
+        width: 32px;
+        height: 32px;
+        font-size: 24px;
+    }
+
+    .Header {
+        margin-bottom: 20px;
+    }
+
+    .Header h2 {
+        font-size: 20px;
+    }
+
+    .Header p {
+        font-size: 13px;
+    }
+
+    .FormGroup {
+        margin-bottom: 18px;
+    }
+
+    .FormGroup label {
+        font-size: 13px;
+    }
+
+    .FormGroup input,
+    .FormGroup textarea {
+        padding: 12px 14px;
+        font-size: 15px;
+        border-radius: 10px;
+    }
+
+    .SubmitButton {
+        padding: 12px;
+        font-size: 15px;
+        border-radius: 10px;
+    }
+
+    .Success,
+    .Error {
+        font-size: 13px;
+        padding: 10px;
+    }
+}
+
+/* ============================================= */
+/* АДАПТИВ ДЛЯ МАЛЕНЬКИХ ТЕЛЕФОНОВ (375px)        */
+/* ============================================= */
+@media (max-width: 375px) {
+    .Modal {
+        padding: 20px 12px;
+        border-radius: 12px 12px 0 0;
+    }
+
+    .Header h2 {
+        font-size: 18px;
+    }
+
+    .Header p {
+        font-size: 12px;
+    }
+
+    .FormGroup label {
+        font-size: 12px;
+    }
+
+    .FormGroup input,
+    .FormGroup textarea {
+        padding: 10px 12px;
+        font-size: 14px;
+    }
+
+    .SubmitButton {
+        padding: 10px;
+        font-size: 14px;
+    }
 }

@@ -10,12 +10,13 @@
     background-color: #0e0e0e;
     width: 100%;
     height: 100%;
-
 }
 
 .Inner {
-    width: 1550px;
+    width: 100%;
+    max-width: 1550px;
     margin: 0 auto;
+    padding: 0 40px;
 }
 
 .FLine {
@@ -25,11 +26,15 @@
     display: flex;
     justify-content: space-between;
     padding-bottom: 75px;
+    flex-wrap: wrap;
+    gap: 30px;
 }
 
 .SLine {
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
 }
 
 .Logo {
@@ -48,7 +53,6 @@
     gap: 20px;
     font-family: "Inter", sans-serif;
     font-size: 16px;
-
     color: #FFFFFF;
     align-items: center;
 }
@@ -60,6 +64,7 @@
     align-items: center;
     justify-content: center;
     background-color: #F6CC00;
+    flex-shrink: 0;
 }
 
 .ImgT {
@@ -83,6 +88,7 @@
     align-items: center;
     justify-content: center;
     background-color: #F6CC00;
+    flex-shrink: 0;
 }
 
 .ImgL {
@@ -106,22 +112,254 @@
     align-items: center;
     justify-content: center;
     background-color: #F6CC00;
+    flex-shrink: 0;
 }
 
 .CopyRight {
     padding-top: 15px;
     padding-bottom: 15px;
-    width: 200px;
+    width: 100%;
+    max-width: 200px;
     margin: 0 auto;
     font-family: "Inter", sans-serif;
     font-size: 14px;
     color: #FFFFFF;
     font-weight: 200;
+    text-align: center;
 }
-.L1{
+
+.L1 {
     color: white;
     font-size: 18px;
-      font-family: "Inter", sans-serif;
-
+    font-family: "Inter", sans-serif;
     font-weight: 100;
+}
+
+/* ============================================= */
+/* АДАПТИВ ДЛЯ ПЛАНШЕТОВ (1024px)                */
+/* ============================================= */
+@media (max-width: 1024px) {
+    .Inner {
+        padding: 0 30px;
+    }
+
+    .FLine {
+        padding-top: 60px;
+        padding-bottom: 50px;
+        gap: 25px;
+    }
+
+    .SLine {
+        gap: 15px;
+    }
+
+    .Logo {
+        height: 120px;
+        width: 140px;
+    }
+
+    .Citi,
+    .Numb,
+    .Mail {
+        font-size: 14px;
+        gap: 15px;
+    }
+
+    .Target,
+    .Call,
+    .Letter {
+        height: 36px;
+        width: 36px;
+    }
+
+    .ImgT {
+        width: 12px;
+        height: 16px;
+    }
+
+    .ImgL {
+        width: 18px;
+        height: 18px;
+    }
+
+    .L1 {
+        font-size: 16px;
+    }
+}
+
+/* ============================================= */
+/* АДАПТИВ ДЛЯ МАЛЕНЬКИХ ПЛАНШЕТОВ (768px)        */
+/* ============================================= */
+@media (max-width: 768px) {
+    .Inner {
+        padding: 0 20px;
+    }
+
+    .FLine {
+        padding-top: 50px;
+        padding-bottom: 40px;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .SLine {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .Logo {
+        height: 100px;
+        width: 120px;
+        margin: 0 auto;
+    }
+
+    .Blocks {
+        gap: 12px;
+    }
+
+    .Citi,
+    .Numb,
+    .Mail {
+        font-size: 14px;
+        gap: 12px;
+    }
+
+    .Target,
+    .Call,
+    .Letter {
+        height: 32px;
+        width: 32px;
+    }
+
+    .L1 {
+        font-size: 15px;
+        text-align: center;
+    }
+
+    .CopyRight {
+        font-size: 13px;
+    }
+}
+
+/* ============================================= */
+/* АДАПТИВ ДЛЯ ТЕЛЕФОНОВ (480px)                 */
+/* ============================================= */
+@media (max-width: 480px) {
+    .Inner {
+        padding: 0 16px;
+    }
+
+    .FLine {
+        padding-top: 40px;
+        padding-bottom: 30px;
+        flex-direction: column;
+        gap: 15px;
+        align-items: center;
+    }
+
+    .SLine {
+        flex-direction: column;
+        gap: 12px;
+        width: 100%;
+    }
+
+    .Logo {
+        height: 80px;
+        width: 100px;
+    }
+
+    .Blocks {
+        gap: 10px;
+        width: 100%;
+        align-items: center;
+    }
+
+    .Citi,
+    .Numb,
+    .Mail {
+        font-size: 13px;
+        gap: 10px;
+        width: 100%;
+        justify-content: center;
+    }
+
+    .Target,
+    .Call,
+    .Letter {
+        height: 30px;
+        width: 30px;
+    }
+
+    .ImgT {
+        width: 10px;
+        height: 14px;
+    }
+
+    .ImgL {
+        width: 16px;
+        height: 16px;
+    }
+
+    .L1 {
+        font-size: 14px;
+        text-align: center;
+    }
+
+    .CopyRight {
+        padding-top: 12px;
+        padding-bottom: 12px;
+        font-size: 12px;
+    }
+}
+
+/* ============================================= */
+/* АДАПТИВ ДЛЯ МАЛЕНЬКИХ ТЕЛЕФОНОВ (375px)        */
+/* ============================================= */
+@media (max-width: 375px) {
+    .Inner {
+        padding: 0 12px;
+    }
+
+    .FLine {
+        padding-top: 30px;
+        padding-bottom: 25px;
+        gap: 12px;
+    }
+
+    .Logo {
+        height: 70px;
+        width: 85px;
+    }
+
+    .Citi,
+    .Numb,
+    .Mail {
+        font-size: 12px;
+        gap: 8px;
+    }
+
+    .Target,
+    .Call,
+    .Letter {
+        height: 26px;
+        width: 26px;
+    }
+
+    .ImgT {
+        width: 10px;
+        height: 12px;
+    }
+
+    .ImgL {
+        width: 14px;
+        height: 14px;
+    }
+
+    .L1 {
+        font-size: 13px;
+    }
+
+    .CopyRight {
+        font-size: 11px;
+    }
 }

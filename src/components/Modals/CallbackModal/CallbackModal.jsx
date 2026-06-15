@@ -11,13 +11,11 @@ function CallbackModal({ onClose }) {
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [message, setMessage] = useState({ text: '', type: '' });
 
-    // Валидация телефона
     const validatePhone = (phone) => {
         const phoneRegex = /^8\d{10}$/;
         return phoneRegex.test(phone);
     };
 
-    // Валидация имени
     const validateName = (name) => {
         return name.trim().length > 0 && name.trim().length <= 40;
     };
@@ -29,7 +27,6 @@ function CallbackModal({ onClose }) {
             [name]: value
         });
         
-        // Очищаем ошибку для этого поля
         if (errors[name]) {
             setErrors({
                 ...errors,
@@ -42,14 +39,12 @@ function CallbackModal({ onClose }) {
     const validateForm = () => {
         const newErrors = {};
         
-        // Валидация имени
         if (!formData.name.trim()) {
             newErrors.name = 'Пожалуйста, введите ваше имя';
         } else if (formData.name.trim().length > 40) {
             newErrors.name = 'Имя не должно превышать 40 символов';
         }
         
-        // Валидация телефона
         if (!formData.phone.trim()) {
             newErrors.phone = 'Пожалуйста, введите номер телефона';
         } else if (!validatePhone(formData.phone)) {

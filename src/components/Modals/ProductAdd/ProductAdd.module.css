@@ -18,6 +18,7 @@
     justify-content: center;
     align-items: center;
     z-index: 2000;
+    padding: 20px;
 }
 
 .Main {
@@ -152,9 +153,34 @@
     transform: none;
 }
 
+.Accept button:active:not(:disabled) {
+    transform: translateY(0);
+}
+
+/* ============================================= */
+/* АДАПТИВ (1024px)                              */
+/* ============================================= */
+@media (max-width: 1024px) {
+    .Inner {
+        padding: 25px;
+    }
+
+    .Inner h2 {
+        font-size: 22px;
+    }
+}
+
+/* ============================================= */
+/* АДАПТИВ (768px) — существующий, сохранён        */
+/* ============================================= */
 @media (max-width: 768px) {
+    .Overlay {
+        padding: 15px;
+    }
+
     .Main {
-        width: 95%;
+        width: 100%;
+        border-radius: 16px;
     }
     
     .Inner {
@@ -173,4 +199,80 @@
     .Accept button {
         width: 100%;
     }
-}   
+}
+
+/* ============================================= */
+/* АДАПТИВ ДЛЯ ТЕЛЕФОНОВ (480px)                 */
+/* ============================================= */
+@media (max-width: 480px) {
+    .Overlay {
+        padding: 0;
+        align-items: flex-end;
+    }
+
+    .Main {
+        border-radius: 16px 16px 0 0;
+        max-height: 92vh;
+    }
+
+    .Inner {
+        padding: 16px;
+    }
+
+    .Inner h2 {
+        font-size: 18px;
+        margin-bottom: 16px;
+        padding-bottom: 8px;
+    }
+
+    .Inner form {
+        gap: 16px;
+    }
+
+    .Inner input, 
+    .Inner select, 
+    .Inner textarea {
+        padding: 10px 12px;
+        font-size: 14px;
+        border-radius: 8px;
+    }
+
+    .Accept {
+        gap: 10px;
+    }
+
+    .Accept button {
+        padding: 12px 16px;
+        font-size: 14px;
+        border-radius: 8px;
+    }
+}
+
+/* ============================================= */
+/* АДАПТИВ ДЛЯ МАЛЕНЬКИХ ТЕЛЕФОНОВ (375px)        */
+/* ============================================= */
+@media (max-width: 375px) {
+    .Main {
+        border-radius: 12px 12px 0 0;
+    }
+
+    .Inner {
+        padding: 14px;
+    }
+
+    .Inner h2 {
+        font-size: 16px;
+    }
+
+    .Inner input, 
+    .Inner select, 
+    .Inner textarea {
+        padding: 8px 10px;
+        font-size: 13px;
+    }
+
+    .Accept button {
+        padding: 10px 14px;
+        font-size: 13px;
+    }
+}

@@ -37,8 +37,7 @@
 }
 
 .slideTitle {   
-      font-family: "Inter", sans-serif;
-
+    font-family: "Inter", sans-serif;
     font-size: 64px;
     font-weight: 700;
     margin: 0;
@@ -49,8 +48,7 @@
 }
 
 .slideDescription {
-      font-family: "Inter", sans-serif;
-
+    font-family: "Inter", sans-serif;
     font-size: 20px;
     line-height: 1.6;
     margin: 0;
@@ -59,8 +57,7 @@
 }
 
 .slideButton {
-      font-family: "Inter", sans-serif;
-
+    font-family: "Inter", sans-serif;
     background-color: #F6CC00;
     color: #000000;
     border: none;
@@ -96,7 +93,6 @@
     background-color: rgba(255, 255, 255, 0.2);
     z-index: 10;
     cursor: pointer;
-    position: relative;
 }
 
 .progressBar {
@@ -132,7 +128,7 @@
     background-color: rgba(255, 255, 255, 0.1);
 }
 
-/* Добавляем разделители между зонами */
+/* Разделители между зонами */
 .zone:not(:last-child)::after {
     content: '';
     position: absolute;
@@ -191,15 +187,22 @@
     }
 }
 
-/* Адаптивность */
+/* ============================================= */
+/* АДАПТИВ ДЛЯ ПЛАНШЕТОВ (1024px)                */
+/* ============================================= */
 @media (max-width: 1024px) {
+    .sliderContainer {
+        height: 550px;
+    }
+
     .slideContent {
         left: 8%;
-        max-width: 500px;
+        max-width: 480px;
+        gap: 20px;
     }
     
     .slideTitle {
-        font-size: 48px;
+        font-size: 44px;
     }
     
     .slideDescription {
@@ -211,11 +214,20 @@
         height: 80px;
         font-size: 16px;
     }
+
+    .navButton {
+        width: 45px;
+        height: 45px;
+        font-size: 24px;
+    }
 }
 
+/* ============================================= */
+/* АДАПТИВ ДЛЯ МАЛЕНЬКИХ ПЛАНШЕТОВ (768px)        */
+/* ============================================= */
 @media (max-width: 768px) {
     .sliderContainer {
-        height: 500px;
+        height: 450px;
     }
     
     .slideContent {
@@ -224,59 +236,141 @@
         max-width: none;
         text-align: center;
         align-items: center;
+        gap: 15px;
     }
     
     .slideTitle {
         font-size: 32px;
+        letter-spacing: 0.5px;
     }
     
     .slideDescription {
         font-size: 16px;
+        line-height: 1.4;
     }
     
     .slideButton {
         width: 260px;
-        height: 70px;
+        height: 65px;
         font-size: 14px;
     }
     
     .navButton {
         width: 40px;
         height: 40px;
-        font-size: 24px;
+        font-size: 22px;
+    }
+
+    .prevButton {
+        left: 10px;
+    }
+
+    .nextButton {
+        right: 10px;
     }
     
-    .zone::after {
-        height: 15px !important;
+    .zone:not(:last-child)::after {
+        height: 15px;
     }
 }
 
+/* ============================================= */
+/* АДАПТИВ ДЛЯ ТЕЛЕФОНОВ (480px)                 */
+/* ============================================= */
 @media (max-width: 480px) {
     .sliderContainer {
-        height: 500px;
+        height: 420px;
+    }
+
+    .slideContent {
+        left: 20px;
+        right: 20px;
+        gap: 12px;
     }
     
     .slideTitle {
-        font-size: 28px;
+        font-size: 26px;
+        line-height: 1.1;
     }
     
     .slideDescription {
         font-size: 14px;
+        line-height: 1.4;
     }
     
     .slideButton {
-        width: 240px;
-        height: 60px;
+        width: 220px;
+        height: 55px;
+        font-size: 13px;
+        letter-spacing: 0.5px;
+    }
+    
+    .navButton {
+        width: 34px;
+        height: 34px;
+        font-size: 18px;
+    }
+
+    .prevButton {
+        left: 8px;
+    }
+
+    .nextButton {
+        right: 8px;
+    }
+    
+    .zone:not(:last-child)::after {
+        height: 12px;
+    }
+
+    .progressBarContainer {
+        height: 3px;
+    }
+}
+
+/* ============================================= */
+/* АДАПТИВ ДЛЯ МАЛЕНЬКИХ ТЕЛЕФОНОВ (375px)        */
+/* ============================================= */
+@media (max-width: 375px) {
+    .sliderContainer {
+        height: 380px;
+    }
+
+    .slideContent {
+        left: 15px;
+        right: 15px;
+        gap: 10px;
+    }
+    
+    .slideTitle {
+        font-size: 22px;
+    }
+    
+    .slideDescription {
+        font-size: 13px;
+    }
+    
+    .slideButton {
+        width: 200px;
+        height: 50px;
         font-size: 12px;
     }
     
     .navButton {
-        width: 35px;
-        height: 35px;
-        font-size: 20px;
+        width: 30px;
+        height: 30px;
+        font-size: 16px;
     }
-    
-    .zone::after {
-        height: 10px !important;
+
+    .prevButton {
+        left: 5px;
+    }
+
+    .nextButton {
+        right: 5px;
+    }
+
+    .zone:not(:last-child)::after {
+        height: 10px;
     }
 }

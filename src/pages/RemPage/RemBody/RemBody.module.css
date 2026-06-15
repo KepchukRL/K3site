@@ -14,6 +14,8 @@
     padding-top: 80px;
     width: 1430px;
     margin: 0 auto;
+    padding-left: 20px;
+    padding-right: 20px;
 }
 
 .Title {
@@ -26,17 +28,18 @@
     display: flex;
     justify-content: space-between;
     margin-top: 50px;
+    gap: 40px;
 }
 
 .Left {
     font-family: "Inter", sans-serif;
     color: #FFFFFF;
     font-size: 20px;
+    flex: 1;
 }
 
 .BtnQuest {
     font-family: "Inter", sans-serif;
-
     padding-top: 80px;
     font-size: 24px;
     width: 280px;
@@ -57,11 +60,20 @@
     justify-content: center;
     color: #000;
     background-color: #F6CC00;
+    cursor: pointer;
+    border: none;
+    transition: background-color 0.3s;
+}
+
+.KnopCall:hover {
+    background-color: #e0b800;
 }
 
 .RightI {
     height: 630px;
     width: 630px;
+    flex-shrink: 0;
+    object-fit: cover;
 }
 
 .Desc {
@@ -82,34 +94,44 @@
 }
 
 .BlockOne {
-    width: 1440px;
+    width: 100%;
+    max-width: 1440px;
     height: 120px;
     background-color: #FFFFFF;
     color: #000;
     font-size: 20px;
     display: flex;
     justify-content: center;
-    align-items: center ;
+    align-items: center;
     text-align: center;
+    padding: 20px;
+    margin: 0 auto;
 }
-.Sell{
+
+.Sell {
     display: flex;
     flex-direction: column;
     font-family: "Inter", sans-serif;
     color: #FFFFFF;
     gap: 25px;
+    padding: 0 20px;
 }
-.TitleSell{
+
+.TitleSell {
     font-size: 60px;
     margin: 0 auto;
 }
-.DescSell{
-    width: 1260px;
+
+.DescSell {
+    width: 100%;
+    max-width: 1260px;
     margin: 0 auto;
     font-size: 18px;
 }
-.BlockTwo{
-    width: 1440px;
+
+.BlockTwo {
+    width: 100%;
+    max-width: 1440px;
     height: 120px;
     background-color: #FFFFFF;
     color: #000;
@@ -117,31 +139,290 @@
     align-items: center;
     justify-content: center;
     font-size: 20px;
+    margin: 0 auto;
+    padding: 20px;
 }
-.OpisSell{
+
+.OpisSell {
     font-size: 18px;
     display: flex;
     flex-direction: column;
     gap: 10px;
 }
-.TitleP{
-      font-family: "Inter", sans-serif;
+
+.TitleP {
+    font-family: "Inter", sans-serif;
     color: #FFFFFF;
     font-size: 60px;
-    width: 650px;
+    width: 100%;
+    max-width: 650px;
     margin-top: 120px;
-    margin: 0 auto;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
 }
-.Photos{
+
+.Photos {
     display: flex;
     flex-wrap: wrap;
-    width: 1360px;
+    width: 100%;
+    max-width: 1360px;
     gap: 30px;
     margin: 0 auto;
     padding-bottom: 120px;
+    justify-content: center;
 }
-.Photo{
-    margin-bottom:30px ;
+
+.Photo {
+    margin-bottom: 30px;
     width: 410px;
     height: 300px;
+    object-fit: cover;
+}
+
+/* ============================================= */
+/* АДАПТИВ ДЛЯ ПЛАНШЕТОВ (1024px и меньше)        */
+/* ============================================= */
+@media screen and (max-width: 1024px) {
+    .Inner {
+        width: 100%;
+        padding-top: 60px;
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+
+    .Title {
+        font-size: 44px;
+    }
+
+    .Quest {
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+    }
+
+    .Left {
+        font-size: 18px;
+        text-align: center;
+    }
+
+    .RightI {
+        width: 100%;
+        max-width: 500px;
+        height: auto;
+        aspect-ratio: 1 / 1;
+    }
+
+    .BtnQuest {
+        padding-top: 40px;
+        font-size: 20px;
+    }
+
+    .KnopCall {
+        width: 240px;
+        font-size: 15px;
+    }
+
+    .BlockOne {
+        height: auto;
+        min-height: 100px;
+        font-size: 18px;
+    }
+
+    .TitleSell {
+        font-size: 44px;
+    }
+
+    .DescSell {
+        font-size: 16px;
+        padding: 0 20px;
+    }
+
+    .BlockTwo {
+        height: auto;
+        min-height: 100px;
+        font-size: 18px;
+    }
+
+    .TitleP {
+        font-size: 44px;
+        margin-top: 80px;
+    }
+
+    .Photos {
+        gap: 20px;
+        padding-bottom: 80px;
+    }
+
+    .Photo {
+        width: calc(50% - 20px);
+        max-width: 350px;
+        height: 250px;
+    }
+}
+
+/* ============================================= */
+/* АДАПТИВ ДЛЯ ТЕЛЕФОНОВ (480px и меньше)         */
+/* iPhone 11 — 414px, iPhone SE — 375px           */
+/* ============================================= */
+@media screen and (max-width: 480px) {
+    .Inner {
+        padding-top: 40px;
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    .Title {
+        font-size: 28px;
+        text-align: center;
+    }
+
+    .Quest {
+        flex-direction: column;
+        align-items: center;
+        margin-top: 30px;
+        gap: 20px;
+    }
+
+    .Left {
+        font-size: 16px;
+        text-align: center;
+    }
+
+    .Desc {
+        gap: 15px;
+        font-size: 15px;
+    }
+
+    .FLine {
+        font-size: 17px;
+    }
+
+    .Perec {
+        font-size: 14px;
+    }
+
+    .BtnQuest {
+        padding-top: 30px;
+        font-size: 18px;
+        width: 100%;
+        gap: 15px;
+    }
+
+    .KnopCall {
+        width: 220px;
+        height: 44px;
+        font-size: 15px;
+    }
+
+    .RightI {
+        width: 100%;
+        max-width: 320px;
+        height: auto;
+        aspect-ratio: 1 / 1;
+    }
+
+    .BlockOne {
+        height: auto;
+        min-height: 80px;
+        font-size: 16px;
+        padding: 15px;
+    }
+
+    .Sell {
+        gap: 15px;
+    }
+
+    .TitleSell {
+        font-size: 28px;
+    }
+
+    .DescSell {
+        font-size: 14px;
+        padding: 0 10px;
+    }
+
+    .BlockTwo {
+        height: auto;
+        min-height: 80px;
+        font-size: 16px;
+        padding: 15px;
+    }
+
+    .OpisSell {
+        font-size: 14px;
+        gap: 8px;
+    }
+
+    .TitleP {
+        font-size: 28px;
+        margin-top: 50px;
+        padding: 0 16px;
+    }
+
+    .Photos {
+        gap: 15px;
+        padding-bottom: 50px;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .Photo {
+        width: 100%;
+        max-width: 400px;
+        height: 220px;
+        margin-bottom: 15px;
+    }
+}
+
+/* ============================================= */
+/* АДАПТИВ ДЛЯ МАЛЕНЬКИХ ТЕЛЕФОНОВ (375px)        */
+/* ============================================= */
+@media screen and (max-width: 375px) {
+    .Inner {
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+
+    .Title {
+        font-size: 24px;
+    }
+
+    .Left {
+        font-size: 14px;
+    }
+
+    .Desc {
+        font-size: 14px;
+    }
+
+    .FLine {
+        font-size: 15px;
+    }
+
+    .BtnQuest {
+        font-size: 16px;
+    }
+
+    .KnopCall {
+        width: 200px;
+        height: 40px;
+        font-size: 14px;
+    }
+
+    .RightI {
+        max-width: 280px;
+    }
+
+    .TitleSell {
+        font-size: 24px;
+    }
+
+    .TitleP {
+        font-size: 24px;
+    }
+
+    .Photo {
+        height: 180px;
+    }
 }

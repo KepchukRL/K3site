@@ -1,107 +1,153 @@
 @import url('https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Manrope:wght@200..800&family=Philosopher:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
-.Inner{
-    width: 1550px;
+
+.Inner {
+    width: 100%;
+    max-width: 1550px;
     margin: 0 auto;
-display: flex;
-align-items: center;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 0 40px;
 }
-.Left{
+
+.Left {
     background-color: #FFFFFF;
     width: 815px;
-    height: 920px;
+    max-width: 100%;
+    height: auto;
+    min-height: 920px;
     padding: 60px;
 }
-.Title{
+
+.Title {
     font-family: "Inter", sans-serif;
     font-size: 40px;
 }
-.Desc{
+
+.Desc {
     font-family: "Inter", sans-serif;
     font-size: 16px;
     margin-top: 40px;
     margin-bottom: 20px;
 }
-.Form{
+
+.Form {
     font-family: "Inter", sans-serif;
     display: flex;
     flex-direction: column;
     gap: 20px;
 }
-.Quest{
+
+.Quest {
     font-size: 20px;
     display: flex;
     flex-direction: column;
     gap: 20px;
 }
-.QuestI{
+
+.QuestI {
     font-size: 16px;
     color: #3F403F;
-    width: 520px;
+    width: 100%;
+    max-width: 520px;
     height: 120px;
     padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    resize: vertical;
 }
-.Name{
-       font-size: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
 
-}
-.NameI{
-    font-size: 16px;
-    color: #3F403F;
-    width: 520px;
-    height: 60px;
-    padding:15px;
-    display: flex;
-    align-items: center;
-}
-.Numb{
+.Name {
     font-size: 20px;
     display: flex;
     flex-direction: column;
     gap: 20px;
 }
-.NumbI{
-  font-size: 16px;
+
+.NameI {
+    font-size: 16px;
     color: #3F403F;
-    width: 520px;
+    width: 100%;
+    max-width: 520px;
     height: 60px;
-    padding:15px;
+    padding: 15px;
     display: flex;
-    align-items: center;  
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 8px;
 }
-.Sogl{
+
+.Numb {
+    font-size: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.NumbI {
+    font-size: 16px;
+    color: #3F403F;
+    width: 100%;
+    max-width: 520px;
+    height: 60px;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
+
+.Sogl {
     display: flex;
     gap: 10px;
     align-items: center;
 }
-.Prov{
+
+.Prov {
     width: 25px;
     height: 25px;
     border: 1px solid #3F403F;
     color: #F6CC00;
+    flex-shrink: 0;
 }
-.ButSub{
-width: 520px;
-height: 80px;
-background-color: #F6CC00;
-margin-top: 40px;
-font-size: 20px;
+
+.ButSub {
+    width: 100%;
+    max-width: 520px;
+    height: 80px;
+    background-color: #F6CC00;
+    margin-top: 40px;
+    font-size: 20px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s;
 }
-.Right{
+
+.ButSub:hover {
+    background-color: #e0b800;
+}
+
+.Right {
     width: 735px;
-    height: 668px;
+    max-width: 100%;
+    height: auto;
+    flex: 1;
+    min-width: 300px;
 }
-.QuestIm{
-    width: 735px;
-    height: 668px;
+
+.QuestIm {
+    width: 100%;
+    height: auto;
+    max-height: 668px;
+    object-fit: cover;
 }
+
 .Success {
     background: #d4edda;
     color: #155724;
@@ -150,6 +196,7 @@ font-size: 20px;
     font-weight: bold;
     color: #F6CC00;
 }
+
 /* Стили для валидации */
 .ErrorInput {
     border-color: #e74c3c !important;
@@ -182,4 +229,199 @@ font-size: 20px;
     font-size: 11px;
     font-family: "Inter", sans-serif;
     margin-top: 5px;
+}
+
+/* ============================================= */
+/* АДАПТИВ ДЛЯ ПЛАНШЕТОВ (1024px)                */
+/* ============================================= */
+@media (max-width: 1024px) {
+    .Inner {
+        padding: 0 30px;
+    }
+
+    .Left {
+        width: 100%;
+        min-height: auto;
+        padding: 40px;
+    }
+
+    .Right {
+        width: 100%;
+        min-width: auto;
+    }
+
+    .QuestIm {
+        max-height: 500px;
+    }
+
+    .Title {
+        font-size: 34px;
+    }
+}
+
+/* ============================================= */
+/* АДАПТИВ ДЛЯ МАЛЕНЬКИХ ПЛАНШЕТОВ (768px)        */
+/* ============================================= */
+@media (max-width: 768px) {
+    .Inner {
+        flex-direction: column;
+        padding: 0 20px;
+    }
+
+    .Left {
+        width: 100%;
+        padding: 30px;
+        min-height: auto;
+    }
+
+    .Right {
+        width: 100%;
+    }
+
+    .QuestIm {
+        max-height: 400px;
+    }
+
+    .Title {
+        font-size: 28px;
+    }
+
+    .Desc {
+        font-size: 14px;
+        margin-top: 25px;
+    }
+
+    .ButSub {
+        height: 65px;
+        font-size: 18px;
+    }
+}
+
+/* ============================================= */
+/* АДАПТИВ ДЛЯ ТЕЛЕФОНОВ (480px)                 */
+/* ============================================= */
+@media (max-width: 480px) {
+    .Inner {
+        padding: 0 16px;
+    }
+
+    .Left {
+        padding: 20px 16px;
+    }
+
+    .Title {
+        font-size: 24px;
+    }
+
+    .Desc {
+        font-size: 13px;
+        margin-top: 20px;
+        margin-bottom: 15px;
+    }
+
+    .Form {
+        gap: 15px;
+    }
+
+    .Quest {
+        font-size: 16px;
+        gap: 12px;
+    }
+
+    .QuestI {
+        height: 100px;
+        padding: 12px;
+        font-size: 14px;
+    }
+
+    .Name {
+        font-size: 16px;
+        gap: 12px;
+    }
+
+    .NameI {
+        height: 50px;
+        padding: 12px;
+        font-size: 14px;
+    }
+
+    .Numb {
+        font-size: 16px;
+        gap: 12px;
+    }
+
+    .NumbI {
+        height: 50px;
+        padding: 12px;
+        font-size: 14px;
+    }
+
+    .ButSub {
+        height: 56px;
+        font-size: 16px;
+        margin-top: 25px;
+    }
+
+    .QuestIm {
+        max-height: 300px;
+    }
+
+    .DescText {
+        font-size: 16px;
+    }
+
+    .Sogl {
+        font-size: 13px;
+    }
+
+    .Prov {
+        width: 22px;
+        height: 22px;
+    }
+}
+
+/* ============================================= */
+/* АДАПТИВ ДЛЯ МАЛЕНЬКИХ ТЕЛЕФОНОВ (375px)        */
+/* ============================================= */
+@media (max-width: 375px) {
+    .Inner {
+        padding: 0 12px;
+    }
+
+    .Left {
+        padding: 16px 12px;
+    }
+
+    .Title {
+        font-size: 22px;
+    }
+
+    .Desc {
+        font-size: 12px;
+    }
+
+    .Quest {
+        font-size: 15px;
+    }
+
+    .Name {
+        font-size: 15px;
+    }
+
+    .Numb {
+        font-size: 15px;
+    }
+
+    .ButSub {
+        height: 50px;
+        font-size: 15px;
+    }
+
+    .QuestIm {
+        max-height: 250px;
+    }
+
+    .DescText {
+        font-size: 14px;
+    }
 }

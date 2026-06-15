@@ -68,6 +68,7 @@
     margin-bottom: 40px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     padding-bottom: 20px;
+    overflow-x: auto;
 }
 
 .Tab {
@@ -81,6 +82,8 @@
     cursor: pointer;
     transition: all 0.3s;
     border-radius: 10px;
+    white-space: nowrap;
+    flex-shrink: 0;
 }
 
 .Tab:hover {
@@ -580,12 +583,66 @@
     color: rgba(255, 255, 255, 0.6);
 }
 
-/* Адаптивность */
+/* ============================================= */
+/* АДАПТИВ ДЛЯ ПЛАНШЕТОВ (1024px)                */
+/* ============================================= */
+@media (max-width: 1024px) {
+    .Header {
+        padding: 15px 25px;
+    }
+
+    .Inner {
+        padding: 30px 25px;
+    }
+
+    .Tabs {
+        gap: 10px;
+        margin-bottom: 30px;
+        padding-bottom: 15px;
+    }
+
+    .Tab {
+        padding: 10px 20px;
+        font-size: 16px;
+    }
+
+    .SectionTitle p {
+        font-size: 24px;
+    }
+
+    .ProductsGrid {
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 20px;
+    }
+
+    .WorksGrid {
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 20px;
+    }
+
+    .ProductImage img {
+        height: 180px;
+    }
+
+    .WorkImage {
+        height: 180px;
+    }
+
+    .ProductInfo,
+    .WorkInfo {
+        padding: 16px;
+    }
+}
+
+/* ============================================= */
+/* АДАПТИВ (768px) — существующий, сохранён        */
+/* ============================================= */
 @media (max-width: 768px) {
     .Header {
         flex-direction: column;
         gap: 15px;
         text-align: center;
+        padding: 15px 20px;
     }
     
     .Inner {
@@ -634,5 +691,226 @@
     
     .ProductsCount {
         font-size: 12px;
+    }
+
+    .ConsulBlock, 
+    .ProductsBlock, 
+    .WorksBlock {
+        padding: 20px;
+    }
+
+    .ProductActions,
+    .WorkActions {
+        flex-direction: column;
+        gap: 8px;
+    }
+}
+
+/* ============================================= */
+/* АДАПТИВ ДЛЯ ТЕЛЕФОНОВ (480px)                 */
+/* ============================================= */
+@media (max-width: 480px) {
+    .Header {
+        padding: 12px 16px;
+    }
+
+    .Logo img {
+        height: 45px;
+    }
+
+    .AdminInfo {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .WelcomeText {
+        font-size: 14px;
+    }
+
+    .LogoutBtn {
+        padding: 6px 16px;
+        font-size: 13px;
+    }
+
+    .Inner {
+        padding: 15px 12px;
+    }
+
+    .Tabs {
+        gap: 8px;
+        margin-bottom: 20px;
+        padding-bottom: 12px;
+    }
+
+    .Tab {
+        padding: 10px 16px;
+        font-size: 14px;
+        border-radius: 8px;
+    }
+
+    .SectionTitle p {
+        font-size: 20px;
+        margin-bottom: 20px;
+    }
+
+    .ConsulBlock, 
+    .ProductsBlock, 
+    .WorksBlock {
+        padding: 16px;
+        border-radius: 14px;
+    }
+
+    .ApplicationsList {
+        gap: 12px;
+    }
+
+    .CardHeader {
+        padding: 10px 15px;
+    }
+
+    .CardBody {
+        padding: 15px;
+        gap: 10px;
+    }
+
+    .CardFooter {
+        padding: 10px 15px;
+    }
+
+    .StatusSelector {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .StatusSelect {
+        width: 100%;
+    }
+
+    .ProductsGrid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .WorksGrid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .ProductImage img {
+        height: 180px;
+    }
+
+    .WorkImage {
+        height: 180px;
+    }
+
+    .ProductInfo,
+    .WorkInfo {
+        padding: 12px;
+    }
+
+    .ProductName,
+    .WorkTitle {
+        font-size: 16px;
+    }
+
+    .ProductPrice {
+        font-size: 18px;
+    }
+
+    .ProductActions,
+    .WorkActions {
+        padding: 10px 15px;
+        flex-direction: row;
+        gap: 6px;
+    }
+
+    .EditBtn,
+    .DeleteBtn {
+        padding: 8px;
+        font-size: 12px;
+    }
+
+    .AddButtonWrapper {
+        margin-bottom: 20px;
+    }
+
+    .AddButton {
+        width: 100%;
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+
+    .FilterPanel {
+        padding: 12px;
+    }
+
+    .SearchInput {
+        padding: 10px 35px 10px 12px;
+        font-size: 13px;
+    }
+
+    .CategorySelect {
+        font-size: 13px;
+    }
+
+    .EmptyMessage {
+        padding: 40px 20px;
+    }
+
+    .EmptyMessage p {
+        font-size: 16px;
+    }
+}
+
+/* ============================================= */
+/* АДАПТИВ ДЛЯ МАЛЕНЬКИХ ТЕЛЕФОНОВ (375px)        */
+/* ============================================= */
+@media (max-width: 375px) {
+    .Header {
+        padding: 10px 12px;
+    }
+
+    .Logo img {
+        height: 40px;
+    }
+
+    .Inner {
+        padding: 12px 10px;
+    }
+
+    .Tab {
+        padding: 8px 12px;
+        font-size: 13px;
+    }
+
+    .SectionTitle p {
+        font-size: 18px;
+    }
+
+    .ProductImage img,
+    .WorkImage {
+        height: 160px;
+    }
+
+    .ProductName,
+    .WorkTitle {
+        font-size: 15px;
+    }
+
+    .ProductPrice {
+        font-size: 16px;
+    }
+
+    .EditBtn,
+    .DeleteBtn {
+        font-size: 11px;
+        padding: 6px;
+    }
+
+    .AddButton {
+        font-size: 13px;
+        padding: 8px 16px;
     }
 }

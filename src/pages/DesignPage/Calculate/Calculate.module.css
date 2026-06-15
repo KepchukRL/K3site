@@ -29,6 +29,7 @@
 
 .Left {
     flex: 1;
+    min-width: 280px;
 }
 
 .Left img {
@@ -39,6 +40,7 @@
 
 .Right {
     flex: 1;
+    min-width: 280px;
 }
 
 .Right form {
@@ -47,15 +49,18 @@
     gap: 20px;
 }
 
-.Right input, .Right select {
+.Right input, 
+.Right select {
     padding: 15px;
     border: 1px solid #ddd;
     border-radius: 10px;
     font-size: 16px;
     transition: border-color 0.3s;
+    background: white;
 }
 
-.Right input:focus, .Right select:focus {
+.Right input:focus, 
+.Right select:focus {
     outline: none;
     border-color: #ff6b35;
 }
@@ -78,12 +83,393 @@
     box-shadow: 0 5px 20px rgba(255, 107, 53, 0.3);
 }
 
+.Right button:active {
+    transform: translateY(0);
+}
+
+/* ============================================= */
+/* СЕКЦИЯ С ПРИМЕРАМИ РАБОТ В КОЛОНКУ            */
+/* ============================================= */
+.WorksSection {
+    margin-top: 100px;
+    padding-top: 60px;
+    border-top: 1px solid #e0e0e0;
+}
+
+.WorksTitle {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.WorksTitle h2 {
+    font-family: "Inter", sans-serif;
+    font-size: 36px;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin: 0;
+}
+
+.WorksList {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.WorkCard {
+    display: flex;
+    gap: 30px;
+    background: white;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s;
+}
+
+.WorkCard:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.WorkImage {
+    width: 350px;
+    min-height: 250px;
+    flex-shrink: 0;
+}
+
+.WorkImage img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.WorkInfo {
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 12px;
+}
+
+.WorkInfo h3 {
+    font-family: "Inter", sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin: 0;
+}
+
+.WorkDescription {
+    font-family: "Inter", sans-serif;
+    font-size: 14px;
+    color: #666;
+    margin: 0;
+    line-height: 1.5;
+}
+
+.WorkPrice {
+    font-family: "Inter", sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: #ff6b35;
+    margin: 0;
+}
+
+/* ============================================= */
+/* АДАПТИВ ДЛЯ ПЛАНШЕТОВ (1024px)                */
+/* ============================================= */
+@media (max-width: 1024px) {
+    .Main {
+        padding: 50px 0;
+    }
+
+    .Inner {
+        padding: 0 30px;
+    }
+
+    .Title {
+        margin-bottom: 40px;
+    }
+
+    .Title p {
+        font-size: 32px;
+    }
+
+    .Content {
+        gap: 35px;
+    }
+
+    .Left img {
+        border-radius: 15px;
+    }
+
+    .WorksSection {
+        margin-top: 80px;
+        padding-top: 50px;
+    }
+
+    .WorksTitle h2 {
+        font-size: 30px;
+    }
+
+    .WorksTitle {
+        margin-bottom: 35px;
+    }
+
+    .WorkImage {
+        width: 280px;
+        min-height: 220px;
+    }
+
+    .WorkInfo h3 {
+        font-size: 18px;
+    }
+}
+
+/* ============================================= */
+/* АДАПТИВ ДЛЯ МАЛЕНЬКИХ ПЛАНШЕТОВ (768px)        */
+/* ============================================= */
 @media (max-width: 768px) {
+    .Main {
+        padding: 40px 0;
+    }
+
+    .Inner {
+        padding: 0 20px;
+    }
+
+    .Title {
+        margin-bottom: 30px;
+    }
+
     .Title p {
         font-size: 24px;
     }
     
     .Content {
         flex-direction: column;
+        gap: 30px;
+    }
+
+    .Left {
+        order: 2;
+    }
+
+    .Right {
+        order: 1;
+    }
+
+    .Left img {
+        border-radius: 12px;
+        max-height: 300px;
+        object-fit: cover;
+    }
+
+    .WorksSection {
+        margin-top: 60px;
+        padding-top: 40px;
+    }
+
+    .WorksTitle {
+        margin-bottom: 30px;
+    }
+
+    .WorksTitle h2 {
+        font-size: 26px;
+    }
+
+    .WorksList {
+        gap: 20px;
+    }
+
+    .WorkCard {
+        flex-direction: column;
+    }
+
+    .WorkImage {
+        width: 100%;
+        min-height: 200px;
+        max-height: 250px;
+    }
+
+    .WorkInfo {
+        padding: 20px;
+    }
+
+    .WorkInfo h3 {
+        font-size: 18px;
+    }
+
+    .WorkPrice {
+        font-size: 20px;
+    }
+}
+
+/* ============================================= */
+/* АДАПТИВ ДЛЯ ТЕЛЕФОНОВ (480px)                 */
+/* ============================================= */
+@media (max-width: 480px) {
+    .Main {
+        padding: 30px 0;
+    }
+
+    .Inner {
+        padding: 0 16px;
+    }
+
+    .Title {
+        margin-bottom: 25px;
+    }
+
+    .Title p {
+        font-size: 22px;
+    }
+
+    .Content {
+        gap: 25px;
+    }
+
+    .Right form {
+        gap: 15px;
+    }
+
+    .Right input, 
+    .Right select {
+        padding: 12px 15px;
+        font-size: 15px;
+        border-radius: 8px;
+    }
+
+    .Right button {
+        padding: 14px;
+        font-size: 16px;
+        border-radius: 8px;
+    }
+
+    .Left img {
+        border-radius: 10px;
+        max-height: 250px;
+    }
+
+    .WorksSection {
+        margin-top: 40px;
+        padding-top: 30px;
+    }
+
+    .WorksTitle {
+        margin-bottom: 20px;
+    }
+
+    .WorksTitle h2 {
+        font-size: 22px;
+    }
+
+    .WorksList {
+        gap: 15px;
+    }
+
+    .WorkImage {
+        min-height: 180px;
+        max-height: 220px;
+    }
+
+    .WorkInfo {
+        padding: 15px;
+        gap: 8px;
+    }
+
+    .WorkInfo h3 {
+        font-size: 16px;
+    }
+
+    .WorkDescription {
+        font-size: 13px;
+    }
+
+    .WorkPrice {
+        font-size: 18px;
+    }
+}
+
+/* ============================================= */
+/* АДАПТИВ ДЛЯ МАЛЕНЬКИХ ТЕЛЕФОНОВ (375px)        */
+/* ============================================= */
+@media (max-width: 375px) {
+    .Main {
+        padding: 25px 0;
+    }
+
+    .Inner {
+        padding: 0 12px;
+    }
+
+    .Title {
+        margin-bottom: 20px;
+    }
+
+    .Title p {
+        font-size: 20px;
+    }
+
+    .Content {
+        gap: 20px;
+    }
+
+    .Right form {
+        gap: 12px;
+    }
+
+    .Right input, 
+    .Right select {
+        padding: 10px 12px;
+        font-size: 14px;
+        border-radius: 6px;
+    }
+
+    .Right button {
+        padding: 12px;
+        font-size: 15px;
+        border-radius: 6px;
+    }
+
+    .Left img {
+        border-radius: 8px;
+        max-height: 220px;
+    }
+
+    .WorksSection {
+        margin-top: 30px;
+        padding-top: 25px;
+    }
+
+    .WorksTitle h2 {
+        font-size: 20px;
+    }
+
+    .WorksList {
+        gap: 12px;
+    }
+
+    .WorkImage {
+        min-height: 160px;
+        max-height: 200px;
+    }
+
+    .WorkInfo {
+        padding: 12px;
+        gap: 6px;
+    }
+
+    .WorkInfo h3 {
+        font-size: 15px;
+    }
+
+    .WorkDescription {
+        font-size: 12px;
+    }
+
+    .WorkPrice {
+        font-size: 16px;
     }
 }

@@ -18,7 +18,6 @@ function Calculate() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        // Здесь будет отправка данных на сервер
         alert('Заявка отправлена! Скоро с вами свяжутся.');
         setFormData({
             name: '',
@@ -27,6 +26,40 @@ function Calculate() {
             roomType: 'apartment'
         });
     };
+
+    // Примеры работ (замените на реальные данные)
+    const works = [
+        {
+            id: 1,
+            image: '/Image/example1.jpg',
+            title: 'Современная квартира в ЖК "Алые Паруса"',
+            square: 65,
+            price: 1850000,
+            rooms: 2,
+            buildingType: 'new',
+            city: 'Оренбург'
+        },
+        {
+            id: 2,
+            image: '/Image/example2.jpg',
+            title: 'Евроремонт в сталинском доме',
+            square: 85,
+            price: 2450000,
+            rooms: 3,
+            buildingType: 'secondary',
+            city: 'Москва'
+        },
+        {
+            id: 3,
+            image: '/Image/example3.jpg',
+            title: 'Студия с умной планировкой',
+            square: 42,
+            price: 1250000,
+            rooms: 1,
+            buildingType: 'new',
+            city: 'Санкт-Петербург'
+        }
+    ];
 
     return (
         <div className={styles.Main}>
@@ -72,6 +105,29 @@ function Calculate() {
                             </select>
                             <button type="submit">Рассчитать стоимость</button>
                         </form>
+                    </div>
+                </div>
+
+                {/* Примеры работ в колонку */}
+                <div className={styles.WorksSection}>
+                    <h2 className={styles.WorksTitle}>Примеры наших работ</h2>
+                    <div className={styles.WorksList}>
+                        {works.map((work) => (
+                            <div key={work.id} className={styles.WorkCard}>
+                                <div className={styles.WorkImage}>
+                                    <img src={work.image} alt={work.title} />
+                                </div>
+                                <div className={styles.WorkInfo}>
+                                    <h3>{work.title}</h3>
+                                    <p className={styles.WorkDescription}>
+                                        {work.city} • {work.rooms} комн. • {work.square} м² • {work.buildingType === 'new' ? 'Новостройка' : 'Вторичка'}
+                                    </p>
+                                    <p className={styles.WorkPrice}>
+                                        {work.price.toLocaleString('ru-RU')} ₽
+                                    </p>
+                                </div>
+                            </div>
+                        ))}
                     </div>
                 </div>
             </div>

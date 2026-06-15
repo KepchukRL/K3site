@@ -13,35 +13,173 @@
 
 .Inner {
     width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
     padding-top: 80px;
+    padding-left: 40px;
+    padding-right: 40px;
     font-family: "Inter", sans-serif;
     color: #FFFFFF;
 }
-.Title{
-    margin-left: 245px;
+
+.Title {
     font-size: 60px;
+    text-align: left;
 }
-.Collage{
+
+.Collage {
     margin-top: 50px;
     display: flex;
     flex-direction: row;
     gap: 30px;
+    justify-content: center;
+    flex-wrap: wrap;
 }
-.FKol{
+
+.FKol {
     display: flex;
     flex-direction: column;
     gap: 30px;
 }
-.SKol{
+
+.SKol {
     display: flex;
     flex-direction: column;
     gap: 30px;
 }
-.TKol{
+
+.TKol {
     display: flex;
     flex-direction: column;
     gap: 30px;
 }
-.Photo{
-    pointer-events:none ;
+
+.Photo {
+    pointer-events: none;
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* ============================================= */
+/* АДАПТИВ ДЛЯ ПЛАНШЕТОВ (1024px)                */
+/* ============================================= */
+@media (max-width: 1024px) {
+    .Inner {
+        padding-top: 60px;
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+
+    .Title {
+        font-size: 44px;
+        text-align: center;
+    }
+
+    .Collage {
+        gap: 20px;
+        margin-top: 40px;
+    }
+
+    .FKol,
+    .SKol,
+    .TKol {
+        gap: 20px;
+    }
+}
+
+/* ============================================= */
+/* АДАПТИВ ДЛЯ МАЛЕНЬКИХ ПЛАНШЕТОВ (768px)        */
+/* ============================================= */
+@media (max-width: 768px) {
+    .Inner {
+        padding-top: 40px;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .Title {
+        font-size: 34px;
+    }
+
+    .Collage {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        margin-top: 30px;
+    }
+
+    .FKol,
+    .SKol,
+    .TKol {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+        width: 100%;
+    }
+
+    .Photo {
+        max-width: 45%;
+    }
+}
+
+/* ============================================= */
+/* АДАПТИВ ДЛЯ ТЕЛЕФОНОВ (480px)                 */
+/* ============================================= */
+@media (max-width: 480px) {
+    .Inner {
+        padding-top: 30px;
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    .Title {
+        font-size: 26px;
+    }
+
+    .Collage {
+        gap: 15px;
+        margin-top: 25px;
+    }
+
+    .FKol,
+    .SKol,
+    .TKol {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+        width: 100%;
+    }
+
+    .Photo {
+        max-width: 100%;
+        width: 100%;
+    }
+}
+
+/* ============================================= */
+/* АДАПТИВ ДЛЯ МАЛЕНЬКИХ ТЕЛЕФОНОВ (375px)        */
+/* ============================================= */
+@media (max-width: 375px) {
+    .Inner {
+        padding-top: 25px;
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+
+    .Title {
+        font-size: 22px;
+    }
+
+    .Collage {
+        gap: 12px;
+        margin-top: 20px;
+    }
+
+    .FKol,
+    .SKol,
+    .TKol {
+        gap: 12px;
+    }
 }

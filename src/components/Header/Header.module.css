@@ -1,13 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Manrope:wght@200..800&family=Philosopher:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
-button{
+button {
     border: none;
     background-color: transparent;
+    cursor: pointer;
 }
 
 .Main {
@@ -17,97 +19,273 @@ button{
 }
 
 .Inner {
-    width: 1350px;
+    width: 100%;
+    max-width: 1350px;
     margin: 0 auto;
     display: flex;
     height: 90px;
     justify-content: space-between;
+    padding: 0 40px;
 }
 
-.Left{
+.Left {
     display: flex;
     flex-direction: row;
     gap: 25px;
+    align-items: center;
 }
 
-.Logo{
+.Logo {
     margin-top: 5px;
-  
 }
 
-.LogoBox{
-  width: 170px;
+.LogoBox {
+    width: 170px;
     height: 155px;
 }
 
-.Cities{
+.Cities {
     display: flex;
     flex-direction: column;
     gap: 10px;
     height: 90px;
     justify-content: center;
-      font-family: "Inter", sans-serif;
-
-}
-.Num{
-display: flex;
-flex-direction: row;
-align-items: center;
-gap: 10px;
-color: white;
+    font-family: "Inter", sans-serif;
 }
 
-.BlockNum{
-width: 30px;
-height: 30px;
-background-color: #F6CC00;
-display: flex;
-justify-content: center;
-align-items: center;
+.Num {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    color: white;
 }
 
-.Tels{
-width: 20px;
-height: 20px;
+.BlockNum {
+    width: 30px;
+    height: 30px;
+    background-color: #F6CC00;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
 }
+
+.Tels {
+    width: 20px;
+    height: 20px;
+}
+
 select {
-  background-color: #21201C;
-  border: none;
-  color: white;
-  font-size: 16px;
-  font-family: "Inter", sans-serif;
-  appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23EEC60B' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'></polyline></svg>");
-  background-repeat: no-repeat;
-  background-position: right 5px center; 
-  background-size: 16px;
-  cursor: pointer;
-  width: auto; 
-  min-width: min-content; 
+    background-color: #21201C;
+    border: none;
+    color: white;
+    font-size: 16px;
+    font-family: "Inter", sans-serif;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23EEC60B' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'></polyline></svg>");
+    background-repeat: no-repeat;
+    background-position: right 5px center;
+    background-size: 16px;
+    cursor: pointer;
+    width: auto;
+    min-width: min-content;
 }
 
 select option {
-  background-color: #21201C;
-  color: white;
+    background-color: #21201C;
+    color: white;
 }
 
 select:focus {
-  outline: none;
+    outline: none;
 }
 
-.Right{
+.Right {
     height: 90px;
     display: flex;
     align-items: center;
     gap: 25px;
 }
 
-.L1{
+.L1 {
     color: white;
     font-size: 18px;
-      font-family: "Inter", sans-serif;
-
+    font-family: "Inter", sans-serif;
     font-weight: 100;
+    white-space: nowrap;
+}
+
+/* ============================================= */
+/* АДАПТИВ ДЛЯ ПЛАНШЕТОВ (1024px)                */
+/* ============================================= */
+@media (max-width: 1024px) {
+    .Inner {
+        padding: 0 25px;
+    }
+
+    .Left {
+        gap: 15px;
+    }
+
+    .Right {
+        gap: 15px;
+    }
+
+    .LogoBox {
+        width: 140px;
+        height: auto;
+    }
+
+    .L1 {
+        font-size: 16px;
+    }
+
+    select {
+        font-size: 14px;
+    }
+}
+
+/* ============================================= */
+/* АДАПТИВ ДЛЯ МАЛЕНЬКИХ ПЛАНШЕТОВ (768px)        */
+/* ============================================= */
+@media (max-width: 768px) {
+    .Main {
+        height: auto;
+        min-height: 70px;
+    }
+
+    .Inner {
+        height: auto;
+        min-height: 70px;
+        flex-wrap: wrap;
+        padding: 10px 20px;
+        gap: 10px;
+    }
+
+    .Left {
+        gap: 12px;
+    }
+
+    .Right {
+        height: auto;
+        gap: 12px;
+    }
+
+    .Cities {
+        height: auto;
+    }
+
+    .LogoBox {
+        width: 120px;
+        height: auto;
+    }
+
+    .L1 {
+        font-size: 14px;
+    }
+
+    select {
+        font-size: 13px;
+    }
+}
+
+/* ============================================= */
+/* АДАПТИВ ДЛЯ ТЕЛЕФОНОВ (480px)                 */
+/* ============================================= */
+@media (max-width: 480px) {
+    .Main {
+        height: auto;
+    }
+
+    .Inner {
+        height: auto;
+        flex-direction: column;
+        align-items: center;
+        padding: 10px 16px;
+        gap: 10px;
+    }
+
+    .Left {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .Right {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .LogoBox {
+        width: 100px;
+        height: auto;
+    }
+
+    .Cities {
+        height: auto;
+        gap: 6px;
+    }
+
+    .Num {
+        font-size: 14px;
+        gap: 6px;
+    }
+
+    .BlockNum {
+        width: 26px;
+        height: 26px;
+    }
+
+    .Tels {
+        width: 16px;
+        height: 16px;
+    }
+
+    .L1 {
+        font-size: 13px;
+    }
+
+    select {
+        font-size: 13px;
+        background-size: 12px;
+    }
+}
+
+/* ============================================= */
+/* АДАПТИВ ДЛЯ МАЛЕНЬКИХ ТЕЛЕФОНОВ (375px)        */
+/* ============================================= */
+@media (max-width: 375px) {
+    .Inner {
+        padding: 8px 12px;
+    }
+
+    .LogoBox {
+        width: 80px;
+    }
+
+    .Left {
+        gap: 8px;
+    }
+
+    .Right {
+        gap: 8px;
+    }
+
+    .L1 {
+        font-size: 12px;
+    }
+
+    .Num {
+        font-size: 12px;
+    }
+
+    select {
+        font-size: 12px;
+    }
 }

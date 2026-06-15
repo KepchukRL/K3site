@@ -75,7 +75,7 @@
     font-size: 16px;
 }
 
-/* Двойной ползунок для выбора диапазона площади */
+/* Двойной ползунок */
 .DoubleRange {
     position: relative;
     height: 6px;
@@ -122,7 +122,6 @@
     transform: scale(1.2);
 }
 
-/* Специальные стили для двойного ползунка */
 .DoubleRange .RangeInput {
     position: absolute;
     width: 100%;
@@ -156,7 +155,7 @@
     display: none;
 }
 
-/* Радиокнопки в колонку */
+/* Радиокнопки */
 .RadioGroup {
     display: flex;
     flex-direction: column;
@@ -248,6 +247,7 @@
     align-items: center;
     justify-content: center;
     color: #F6CC00;
+    flex-shrink: 0;
 }
 
 .SliderButton:hover {
@@ -461,22 +461,19 @@
     justify-content: center;
     z-index: 2000;
     animation: fadeIn 0.3s ease;
+    padding: 20px;
 }
 
 @keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
 
 .ModalContent {
     background: #21201C;
     border-radius: 20px;
     max-width: 900px;
-    width: 90%;
+    width: 100%;
     max-height: 85vh;
     overflow-y: auto;
     position: relative;
@@ -485,14 +482,8 @@
 }
 
 @keyframes slideUp {
-    from {
-        transform: translateY(50px);
-        opacity: 0;
-    }
-    to {
-        transform: translateY(0);
-        opacity: 1;
-    }
+    from { transform: translateY(50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
 }
 
 .ModalContent::-webkit-scrollbar {
@@ -599,96 +590,6 @@
     margin-right: 10px;
 }
 
-@media (max-width: 1320px) {
-    .Title {
-        max-width: 100%;
-        padding: 0 20px;
-    }
-    
-    .Inner {
-        max-width: 100%;
-        padding: 0 20px;
-    }
-}
-
-@media (max-width: 768px) {
-    .Main {
-        padding: 30px 15px;
-    }
-    
-    .Title p {
-        font-size: 32px;
-    }
-    
-    .Inner {
-        flex-direction: column;
-        padding: 0;
-    }
-    
-    .Title {
-        padding: 0;
-    }
-    
-    .Left {
-        min-width: auto;
-    }
-    
-    .Right {
-        min-width: auto;
-    }
-    
-    .Options {
-        position: static;
-    }
-    
-    .SliderContainer {
-        flex-direction: column;
-        padding: 20px;
-    }
-    
-    .SliderButton {
-        order: 1;
-    }
-    
-    .Slide {
-        order: 0;
-    }
-    
-    .SlideContent {
-        flex-direction: column;
-    }
-    
-    .SlideImage img {
-        height: 250px;
-    }
-    
-    .SlideInfo h3 {
-        font-size: 20px;
-    }
-    
-    .RadioGroup {
-        gap: 10px;
-    }
-    
-    .RadioLabel {
-        font-size: 12px;
-    }
-    
-    .FilterStats {
-        flex-direction: column;
-        gap: 10px;
-        align-items: flex-start;
-    }
-    
-    .ModalContent h2 {
-        font-size: 20px;
-        padding: 20px 20px 10px 20px;
-    }
-    
-    .ModalBody {
-        padding: 20px;
-    }
-}
 /* Пагинация */
 .Pagination {
     display: flex;
@@ -768,7 +669,143 @@
     color: rgba(255, 255, 255, 0.5);
 }
 
+/* ============================================= */
+/* АДАПТИВ (1320px) — существующий, сохранён       */
+/* ============================================= */
+@media (max-width: 1320px) {
+    .Title {
+        max-width: 100%;
+        padding: 0 20px;
+    }
+    
+    .Inner {
+        max-width: 100%;
+        padding: 0 20px;
+    }
+}
+
+/* ============================================= */
+/* АДАПТИВ (1024px) — ПЛАНШЕТЫ                    */
+/* ============================================= */
+@media (max-width: 1024px) {
+    .Main {
+        padding: 40px 25px;
+    }
+
+    .Title p {
+        font-size: 38px;
+    }
+
+    .Left {
+        min-width: 250px;
+    }
+
+    .Right {
+        min-width: 400px;
+    }
+
+    .Options {
+        padding: 20px;
+    }
+
+    .SliderContainer {
+        padding: 20px;
+    }
+
+    .SlideImage img {
+        height: 280px;
+    }
+
+    .SlideInfo h3 {
+        font-size: 20px;
+    }
+
+    .ModalContent {
+        max-width: 95%;
+    }
+}
+
+/* ============================================= */
+/* АДАПТИВ (768px) — существующий, сохранён        */
+/* ============================================= */
 @media (max-width: 768px) {
+    .Main {
+        padding: 30px 15px;
+    }
+    
+    .Title p {
+        font-size: 32px;
+    }
+    
+    .Inner {
+        flex-direction: column;
+        padding: 0;
+    }
+    
+    .Title {
+        padding: 0;
+    }
+    
+    .Left {
+        min-width: auto;
+    }
+    
+    .Right {
+        min-width: auto;
+    }
+    
+    .Options {
+        position: static;
+    }
+    
+    .SliderContainer {
+        flex-direction: column;
+        padding: 20px;
+    }
+    
+    .SliderButton {
+        order: 1;
+    }
+    
+    .Slide {
+        order: 0;
+    }
+    
+    .SlideContent {
+        flex-direction: column;
+    }
+    
+    .SlideImage img {
+        height: 250px;
+    }
+    
+    .SlideInfo h3 {
+        font-size: 20px;
+    }
+    
+    .RadioGroup {
+        gap: 10px;
+    }
+    
+    .RadioLabel {
+        font-size: 12px;
+    }
+    
+    .FilterStats {
+        flex-direction: column;
+        gap: 10px;
+        align-items: flex-start;
+    }
+    
+    .ModalContent h2 {
+        font-size: 20px;
+        padding: 20px 20px 10px 20px;
+    }
+    
+    .ModalBody {
+        padding: 20px;
+    }
+
     .Pagination {
         gap: 5px;
     }
@@ -786,5 +823,282 @@
     
     .PaginationInfo {
         font-size: 11px;
+    }
+}
+
+/* ============================================= */
+/* АДАПТИВ ДЛЯ ТЕЛЕФОНОВ (480px) — НОВЫЙ          */
+/* ============================================= */
+@media (max-width: 480px) {
+    .Main {
+        padding: 20px 12px;
+    }
+
+    .Title {
+        margin-bottom: 30px;
+    }
+
+    .Title p {
+        font-size: 26px;
+    }
+
+    .Inner {
+        gap: 25px;
+    }
+
+    .Options {
+        padding: 16px;
+        border-radius: 14px;
+        gap: 20px;
+    }
+
+    .FilterGroup label {
+        font-size: 14px;
+        margin-bottom: 10px;
+    }
+
+    .FilterGroup:not(:last-child) {
+        padding-bottom: 18px;
+    }
+
+    .RadioGroup {
+        gap: 8px;
+    }
+
+    .RadioLabel {
+        font-size: 13px;
+    }
+
+    .RadioLabel input {
+        width: 18px;
+        height: 18px;
+        margin-right: 8px;
+    }
+
+    .SliderContainer {
+        padding: 16px;
+        border-radius: 14px;
+        gap: 15px;
+    }
+
+    .SliderButton {
+        width: 40px;
+        height: 40px;
+        font-size: 20px;
+    }
+
+    .SlideContent {
+        gap: 15px;
+    }
+
+    .SlideImage {
+        min-width: auto;
+    }
+
+    .SlideImage img {
+        height: 200px;
+        border-radius: 10px;
+    }
+
+    .SlideInfo {
+        min-width: auto;
+    }
+
+    .SlideInfo h3 {
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+
+    .Description {
+        font-size: 13px;
+        margin-bottom: 15px;
+    }
+
+    .Details {
+        padding: 12px;
+    }
+
+    .DetailItem {
+        padding: 6px 0;
+        font-size: 13px;
+    }
+
+    .DetailsButton {
+        font-size: 13px;
+        padding: 10px 16px;
+    }
+
+    .Dots {
+        gap: 8px;
+        margin-top: 20px;
+    }
+
+    .Dot {
+        width: 8px;
+        height: 8px;
+    }
+
+    .ActiveDot {
+        width: 10px;
+        height: 10px;
+    }
+
+    /* Модалка на телефоне */
+    .Modal {
+        padding: 10px;
+        align-items: flex-end;
+    }
+
+    .ModalContent {
+        border-radius: 16px 16px 0 0;
+        max-height: 90vh;
+        width: 100%;
+    }
+
+    .ModalContent h2 {
+        font-size: 18px;
+        padding: 16px 16px 10px 16px;
+    }
+
+    .ModalBody {
+        padding: 16px;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .ModalImage {
+        min-width: auto;
+    }
+
+    .ModalImage img {
+        border-radius: 10px;
+    }
+
+    .ModalClose {
+        top: 12px;
+        right: 14px;
+        font-size: 26px;
+        width: 30px;
+        height: 30px;
+    }
+
+    .ModalDescription {
+        font-size: 13px;
+    }
+
+    .ModalDetails {
+        padding: 14px;
+    }
+
+    .ModalDetail {
+        font-size: 13px;
+        padding: 8px 0;
+    }
+
+    /* Пагинация */
+    .Pagination {
+        gap: 4px;
+        margin-top: 30px;
+    }
+
+    .PageBtn {
+        padding: 6px 10px;
+        font-size: 11px;
+        border-radius: 6px;
+    }
+
+    .PageNumbers {
+        gap: 4px;
+    }
+
+    .PageNumber {
+        width: 30px;
+        height: 30px;
+        font-size: 11px;
+        border-radius: 6px;
+    }
+
+    .PaginationInfo {
+        font-size: 11px;
+        margin-top: 15px;
+    }
+
+    .EmptyState {
+        padding: 40px 20px;
+    }
+
+    .EmptyState p {
+        font-size: 16px;
+    }
+
+    .FilterStats {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .ResetBtn {
+        font-size: 12px;
+        padding: 6px 14px;
+    }
+}
+
+/* ============================================= */
+/* АДАПТИВ ДЛЯ МАЛЕНЬКИХ ТЕЛЕФОНОВ (375px)        */
+/* ============================================= */
+@media (max-width: 375px) {
+    .Main {
+        padding: 15px 10px;
+    }
+
+    .Title p {
+        font-size: 22px;
+    }
+
+    .Options {
+        padding: 12px;
+        border-radius: 10px;
+        gap: 15px;
+    }
+
+    .SliderContainer {
+        padding: 12px;
+        border-radius: 10px;
+    }
+
+    .SlideImage img {
+        height: 170px;
+    }
+
+    .SlideInfo h3 {
+        font-size: 16px;
+    }
+
+    .Description {
+        font-size: 12px;
+    }
+
+    .DetailItem {
+        font-size: 12px;
+    }
+
+    .DetailsButton {
+        font-size: 12px;
+        padding: 8px 14px;
+    }
+
+    .PageNumber {
+        width: 26px;
+        height: 26px;
+        font-size: 10px;
+    }
+
+    .PageBtn {
+        padding: 4px 8px;
+        font-size: 10px;
+    }
+
+    .ModalContent h2 {
+        font-size: 16px;
     }
 }

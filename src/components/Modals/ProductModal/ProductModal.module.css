@@ -13,6 +13,7 @@
     align-items: center;
     z-index: 2000;
     animation: fadeIn 0.3s ease;
+    padding: 20px;
 }
 
 .Modal {
@@ -28,10 +29,25 @@
     border: 1px solid rgba(246, 204, 0, 0.3);
 }
 
+.Modal::-webkit-scrollbar {
+    width: 8px;
+}
+
+.Modal::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 4px;
+}
+
+.Modal::-webkit-scrollbar-thumb {
+    background: #F6CC00;
+    border-radius: 4px;
+}
+
 .CloseButton {
-    position: absolute;
+    position: sticky;
     top: 20px;
-    right: 20px;
+    float: right;
+    margin-right: 20px;
     background: rgba(255, 255, 255, 0.1);
     border: none;
     font-size: 28px;
@@ -46,6 +62,7 @@
     transition: all 0.3s ease;
     font-family: "Inter", sans-serif;
     z-index: 10;
+    flex-shrink: 0;
 }
 
 .CloseButton:hover {
@@ -65,7 +82,7 @@
     flex: 1;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
 }
 
 .ImageWrapper img {
@@ -143,6 +160,10 @@
     box-shadow: 0 5px 20px rgba(246, 204, 0, 0.3);
 }
 
+.CallbackButton:active {
+    transform: translateY(0);
+}
+
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -163,7 +184,44 @@
     }
 }
 
+/* ============================================= */
+/* АДАПТИВ (1024px)                              */
+/* ============================================= */
+@media (max-width: 1024px) {
+    .Modal {
+        max-width: 900px;
+    }
+
+    .Content {
+        padding: 30px;
+        gap: 30px;
+    }
+
+    .ImageWrapper img {
+        max-width: 400px;
+    }
+
+    .Description p {
+        font-size: 16px;
+    }
+
+    .Price {
+        font-size: 24px;
+    }
+}
+
+/* ============================================= */
+/* АДАПТИВ (768px) — существующий, сохранён        */
+/* ============================================= */
 @media (max-width: 768px) {
+    .Overlay {
+        padding: 15px;
+    }
+
+    .Modal {
+        border-radius: 16px;
+    }
+
     .Content {
         flex-direction: column;
         padding: 30px;
@@ -172,6 +230,7 @@
     
     .ImageWrapper img {
         max-width: 100%;
+        max-height: 350px;
     }
     
     .Description p {
@@ -184,5 +243,103 @@
     
     .CallbackButton {
         max-width: 100%;
+    }
+}
+
+/* ============================================= */
+/* АДАПТИВ ДЛЯ ТЕЛЕФОНОВ (480px)                 */
+/* ============================================= */
+@media (max-width: 480px) {
+    .Overlay {
+        padding: 0;
+        align-items: flex-end;
+    }
+
+    .Modal {
+        border-radius: 16px 16px 0 0;
+        max-height: 92vh;
+        width: 100%;
+    }
+
+    .CloseButton {
+        width: 36px;
+        height: 36px;
+        font-size: 24px;
+        margin-right: 16px;
+    }
+
+    .Content {
+        padding: 20px 16px;
+        gap: 20px;
+    }
+
+    .ImageWrapper img {
+        max-height: 250px;
+        border-radius: 12px;
+    }
+
+    .Category {
+        font-size: 13px;
+    }
+
+    .Description p {
+        font-size: 14px;
+    }
+
+    .FullDescription h3 {
+        font-size: 17px;
+    }
+
+    .FullDescription p {
+        font-size: 14px;
+    }
+
+    .Price {
+        font-size: 22px;
+    }
+
+    .CallbackButton {
+        padding: 12px 24px;
+        font-size: 15px;
+        border-radius: 10px;
+    }
+}
+
+/* ============================================= */
+/* АДАПТИВ ДЛЯ МАЛЕНЬКИХ ТЕЛЕФОНОВ (375px)        */
+/* ============================================= */
+@media (max-width: 375px) {
+    .Modal {
+        border-radius: 12px 12px 0 0;
+    }
+
+    .Content {
+        padding: 16px 12px;
+        gap: 16px;
+    }
+
+    .ImageWrapper img {
+        max-height: 200px;
+    }
+
+    .Description p {
+        font-size: 13px;
+    }
+
+    .FullDescription h3 {
+        font-size: 16px;
+    }
+
+    .FullDescription p {
+        font-size: 13px;
+    }
+
+    .Price {
+        font-size: 20px;
+    }
+
+    .CallbackButton {
+        padding: 10px 20px;
+        font-size: 14px;
     }
 }
